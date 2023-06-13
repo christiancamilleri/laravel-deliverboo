@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('restaurant_id');
 
             $table->string('name', 100);
             $table->string('slug', 100);
@@ -24,6 +25,8 @@ return new class extends Migration
             $table->string('photo')->nullable();
 
             $table->timestamps();
+
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->cascadeOnDelete();
         });
     }
 
