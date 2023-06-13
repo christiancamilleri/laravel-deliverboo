@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Typology extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'icon', 'color'];
+
+    public function restaurants()
+    {
+        return $this->belongsToMany(Restaurant::class);
+    }
 }

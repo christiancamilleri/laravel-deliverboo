@@ -10,4 +10,19 @@ class Restaurant extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'address', 'cap', 'vat_number', 'logo', 'cover'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function typologies()
+    {
+        return $this->belongsToMany(Typology::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
