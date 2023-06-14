@@ -9,6 +9,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\DB;
 
 class OrderSeeder extends Seeder
 {
@@ -49,7 +50,14 @@ class OrderSeeder extends Seeder
             for ($j = 0; $j < $randomNumberProducts; $j++) {
                 $randomProduct = $faker->randomElement($restaurantMenu);
 
-                $order->products()->attach($randomProduct);
+                // controllo se è già stato aggiunto un prodotto di tipo $randomProduct
+                if ($order->products()->wherePivot('product_id', $randomProduct->id)->exists()) {
+                    // in caso affermativo incremento solo la quantità
+                    $order->products()->wherePivot('product_id', $randomProduct->id)->increment('quantity');
+                } else {
+                    // altrimenti aggiungo il record
+                    $order->products()->attach($randomProduct);
+                }
 
                 $order->total_price += $randomProduct->price;
             }
