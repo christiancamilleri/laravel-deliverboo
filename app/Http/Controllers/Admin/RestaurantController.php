@@ -15,7 +15,11 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+        $restaurants = Restaurant::all();
+
+        dd($restaurants[1]->user);
+
+        return view('admin.restaurants.index', compact('restaurants'));
     }
 
     /**
@@ -25,7 +29,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.restaurants.create');
     }
 
     /**
@@ -36,7 +40,7 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return redirect()->route('admin.restaurants.show', $newRestaurant);
     }
 
     /**
@@ -47,7 +51,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('admin.restaurants.show', compact('restaurant'));
     }
 
     /**
