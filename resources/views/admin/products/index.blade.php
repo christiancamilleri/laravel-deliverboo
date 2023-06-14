@@ -1,22 +1,55 @@
 @extends ('layouts.admin')
 
 @section('content')
-    @if(count($products))
+    <div class="container">
 
-    @foreach ($products as $product)
-    <ul>
-        <li>
-            {{ $product->name }}
-        </li>
-        <li>
-            <a class="btn btn-primary" href="{{ route('admin.restaurants.products.show', [$restaurant->slug, $product->slug]) }}">Dettagli</a>
-        </li>
-    </ul>
-    @endforeach
-    @else
-    non hai prodotti
+        <h1 class="my-5 text-center">Il tuo menu</h1>
 
-    @endif
+        <div class="my-5 text-center">
+            <a class="btn btn-primary" href="{{ route('admin.restaurants.products.create', $restaurant) }}">Aggiungi un
+                prodotto</a>
+        </div>
 
-    <a class="btn btn-primary" href="{{route('admin.restaurants.products.create', $restaurant->id)}}">Aggiungi un prodotto</a>
+
+        @if (count($products))
+            <div class="row row-gap-4 my-5">
+                @foreach ($products as $product)
+                    <div class="col-12 col-sm-12 col-lg-6 col-xl-4">
+                        <div class="card">
+                            <img src="{{ $product->photo ? asset('storage/' . $product->photo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
+                                class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $product->name }}</h5>
+                                <p class="card-text">{{ $product->description }}</p>
+                                <p class="card-text">{{ $product->price }} Euro</p>
+                                @if ($product->visible)
+                                    <span class="badge rounded-pill text-bg-success card-title">Disponibile</span>
+                                @else
+                                    <span class="badge rounded-pill text-bg-danger card-title">Non disponibile</span>
+                                @endif
+                                <div>
+                                    <a href="{{ route('admin.restaurants.products.show', [$restaurant->slug, $product->slug]) }}"
+                                        class="btn btn-primary">Dettagli</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <div class="alert alert-secondary" role="alert">
+                Il tuo ristorant non contiene ancora nessun prodotto
+            </div>
+        @endif
+
+    </div>
+
 @endsection
+
+
+<style>
+    img {
+        height: 250px;
+        object-fit: cover
+    }
+</style>
