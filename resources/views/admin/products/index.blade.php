@@ -28,8 +28,7 @@
                                     <span class="badge rounded-pill text-bg-danger card-title">Non disponibile</span>
                                 @endif
                                 <div>
-                                    <a href="{{ route('admin.restaurants.products.show', [$restaurant->slug, $product->slug]) }}"
-                                        class="btn btn-primary">Dettagli</a>
+                                    <a href="{{ route('admin.restaurants.products.show', [$restaurant->slug, $product->slug]) }}" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +37,7 @@
             </div>
         @else
             <div class="alert alert-secondary" role="alert">
-                Il tuo ristorant non contiene ancora nessun prodotto
+                Il tuo ristorante non contiene ancora nessun prodotto
             </div>
         @endif
 
