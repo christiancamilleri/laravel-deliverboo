@@ -22,7 +22,13 @@ class RestaurantSeeder extends Seeder
 
             $restaurant->user_id = $i + 1;
             $restaurant->name = $faker->company();
-            $restaurant->slug = Str::slug($restaurant->name, '-');
+
+            $restaurant->slug = Str::slug($restaurant->name);
+            $duplicate = count(Restaurant::where('slug', $restaurant->slug)->get());
+            if($duplicate){
+                $restaurant->slug .= '-' . $duplicate;
+            }
+
             $restaurant->address = $faker->streetAddress();
             $restaurant->postal_code = $faker->postcode();
             $restaurant->vat_number = $faker->vat();
