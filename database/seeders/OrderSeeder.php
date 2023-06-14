@@ -39,7 +39,7 @@ class OrderSeeder extends Seeder
 
             $randomRestaurant = $faker->randomElement($restaurants);
 
-            $restaurantMenu = Product::where('restaurant_id', $randomRestaurant->id)->get();
+            $restaurantMenu = $randomRestaurant->products;
 
             // L'ordine contiene un numero casuale di prodotti
             $randomNumberProducts = 0;
