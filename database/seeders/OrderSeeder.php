@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Order;
+use App\Models\Product;
+use App\Models\Restaurant;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -20,13 +22,37 @@ class OrderSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $order = new Order();
 
-            $order->date_time = $faker->dateTime();
             $order->total_price = 0;
+            $order->date_time = $faker->dateTime();
             $order->name = $faker->firstName() . ' ' . $faker->lastName();
             $order->email = $faker->email();
             $order->postal_code = $faker->postcode();
             $order->address = $faker->streetAddress();
 
+            $order->save();
+
+            // riempimento dell'ordine con un numero casuale di prodotti casuali
+
+            // l'ordine viene generato in uno dei ristoranti casualmente
+            $restaurants = Restaurant::all();
+
+            $randomRestaurant = $faker->randomElement($restaurants);
+
+            $restaurantMenu = Product::where('restaurant_id', $randomRestaurant->id)->get();
+
+            // L'ordine contiene un numero casuale di prodotti
+            $randomNumberProducts = 0;
+            if (count($restaurantMenu)) {
+                $randomNumberProducts = $faker->numberBetween(1, 5);
+            }
+
+            for ($j = 0; $j < $randomNumberProducts; $j++) {
+                $randomProduct = $faker->randomElement($restaurantMenu);
+
+                $order->products()->attach($randomProduct);
+
+                $order->total_price += $randomProduct->price;
+            }
             $order->save();
         }
     }
