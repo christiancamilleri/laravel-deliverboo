@@ -176,14 +176,12 @@ class RestaurantController extends Controller
             // $restaurant->logo = $path;
             $formData['logo'] = $path;
         };
+    
+        // Calcoliamo lo slug con il metodo statico della classe Str
+        $restaurant->slug = Str::slug($formData['name']);
         
         // Salvo nel database il nuovo restaurant con tutte le info
         $restaurant->update($formData);
-    
-        // Calcoliamo lo slug con il metodo statico della classe Str
-        $restaurant->slug = Str::slug($restaurant->name);
-
-        $restaurant->save();
     
         // Controllo se le typologies esistono effettivamente nel database
         if(array_key_exists('typologies', $formData)) { 

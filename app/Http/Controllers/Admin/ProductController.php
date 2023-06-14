@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -43,6 +44,8 @@ class ProductController extends Controller
     {
         $formData = $request->all();
 
+        $this->validator($formData);
+
         $newProduct = new Product();
 
         if ($request->hasFile('photo')) {
@@ -76,7 +79,7 @@ class ProductController extends Controller
      */
     public function show(Restaurant $restaurant, Product $product)
     {
-        return view('admin.products.show', compact('product'));
+        return view('admin.products.show', compact('restaurant', 'product'));
     }
 
     /**
@@ -85,9 +88,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Restaurant $restaurant, Product $product)
     {
-        return view('admin.products.edit', compact('product'));
+        return view('admin.products.edit', compact('restaurant', 'product'));
     }
 
     /**
@@ -97,9 +100,38 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Restaurant $restaurant, Product $product)
     {
-        //
+
+        $formData = $request->all();
+        
+        $this->validator($formData);
+        // dd($request);
+        
+        if ($request->hasFile('photo')) {
+
+            if($product->photo) {
+                Storage::delete($product->photo);
+            }
+
+            $path = Storage::put('product_images', $request->photo);
+
+            $formData['photo'] = $path;
+        }
+
+        $product->fill($formData);
+
+        if (array_key_exists('visible', $formData)) {
+            $product->visible = 1;
+        } else {
+            $product->visible = 0;
+        }
+
+        $product->slug = Str::slug($formData['name']);
+
+        $product->update($formData);
+        
+        return to_route('admin.restaurants.products.show', [$restaurant, $product]);
     }
 
     /**
@@ -108,36 +140,39 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    // public function destroy(Product $product)
-    // {
-    // $product->delete();
+    public function destroy(Restaurant $restaurant, Product $product)
+    {
+        if($product->photo){
+            Storage::delete($product->photo);
+        }
+        
+        $product->delete();
 
-    // return to_route('admin.products.index');
-    // }
+        return to_route('admin.restaurants.products.index', $restaurant);
+    }
 
-    // private function validator($formData) {
+    private function validator($formData) {
 
-    //     $validator = Validator::make($formData, [
+        $validator = Validator::make($formData, [
 
-    //         'name' => 'required|max:100',
-    //         'description' => 'required|max:65535',
-    //         'price' => 'required|numeric|max:999,99',
-    //         'photo' => 'image|max:4096|nullable',
-    //     ],[
-    //         'name.required' => 'Devi inserire il nome del prodotto',
-    //         'name.max' => 'Il nome del prodotto deve essere al massimo di 100 caratteri',
-    //         'description.required' => 'Devi inserire una descrizione del prodotto',
-    //         'description.max' => 'La descrizione non deve superare i 65535 caratteri',
-    //         'price.required' => 'Devi inserire un prezzo per il prodotto',
-    //         'price.numeric' => 'Puoi inserire solo caratteri numerici',
-    //         'price.max' => 'Il prezzo massimo inseribile è pari a 999,99',
+            'name' => 'required|max:100',
+            'description' => 'required|max:65535',
+            'price' => 'required|numeric|max:999,99',
+            'photo' => 'image|max:4096|nullable',
+        ],[
+            'name.required' => 'Devi inserire il nome del prodotto',
+            'name.max' => 'Il nome del prodotto deve essere al massimo di 100 caratteri',
+            'description.required' => 'Devi inserire una descrizione del prodotto',
+            'description.max' => 'La descrizione non deve superare i 65535 caratteri',
+            'price.numeric' => 'Puoi inserire solo caratteri numerici',
+            'price.max' => 'Il prezzo massimo inseribile è pari a 999,99',
 
-    //         'photo.image' => 'Il file deve esser un immagine',
-    //         'photo.max' => 'Il file non può essere più grande di 4MB',
+            'photo.image' => 'Il file deve esser un immagine',
+            'photo.max' => 'Il file non può essere più grande di 4MB',
 
-    //     ])->validate();
+        ])->validate();
 
-    //     return $validator;
+        return $validator;
 
-    // }
+    }
 }
