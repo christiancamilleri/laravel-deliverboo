@@ -16,9 +16,8 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($restaurant_slug)
-    {   
-        $restaurant = Restaurant::where('slug', $restaurant_slug)->first();
+    public function index(Restaurant $restaurant)
+    {
         $products = $restaurant->products;
 
         return view('admin.products.index', compact('restaurant', 'products'));
@@ -29,9 +28,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($restaurant_id)
+    public function create(Restaurant $restaurant)
     {
-        return view('admin.products.create', compact('restaurant_id'));
+        return view('admin.products.create', compact('restaurant'));
     }
 
     /**
@@ -40,29 +39,33 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $restaurant_id)
+    public function store(Request $request, Restaurant $restaurant)
     {
-        $restaurant = Restaurant::where('id', $restaurant_id)->first();
-
         $formData = $request->all();
 
         $newProduct = new Product();
 
-        if($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
             $path = Storage::put('product_images', $request->photo);
 
             $formData['photo'] = $path;
         }
-        
+
         $newProduct->fill($formData);
+
+        if (array_key_exists('visible', $formData)) {
+            $newProduct->visible = 1;
+        } else {
+            $newProduct->visible = 0;
+        }
 
         $newProduct->slug = Str::slug($newProduct->name);
 
-        $newProduct->restaurant_id = $restaurant_id;
+        $newProduct->restaurant_id = $restaurant->id;
 
         $newProduct->save();
 
-        return to_route('admin.restaurants.products.show', [$restaurant->slug, $newProduct->slug]);
+        return to_route('admin.restaurants.products.show', [$restaurant, $newProduct]);
     }
 
     /**
@@ -71,10 +74,8 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($restaurant_slug, $product_slug)
+    public function show(Restaurant $restaurant, Product $product)
     {
-        $product = Product::where('slug', $product_slug)->first();
-
         return view('admin.products.show', compact('product'));
     }
 
@@ -109,15 +110,15 @@ class ProductController extends Controller
      */
     // public function destroy(Product $product)
     // {
-        // $product->delete();
-        
-        // return to_route('admin.products.index');
+    // $product->delete();
+
+    // return to_route('admin.products.index');
     // }
 
     // private function validator($formData) {
 
     //     $validator = Validator::make($formData, [
-            
+
     //         'name' => 'required|max:100',
     //         'description' => 'required|max:65535',
     //         'price' => 'required|numeric|max:999,99',

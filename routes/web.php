@@ -32,7 +32,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
 
     Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
 
-    Route::resource('restaurants.products', ProductController::class)->parameters(['products' => 'product:slug']);
+    Route::resource('restaurants.products', ProductController::class)->parameters(['restaurants' => 'restaurant:slug', 'products' => 'product:slug']);
 });
 
 require __DIR__ . '/auth.php';
