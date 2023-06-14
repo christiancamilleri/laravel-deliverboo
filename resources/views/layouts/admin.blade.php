@@ -1,3 +1,15 @@
+<?php
+
+    $UserRestaurant = Auth::user()->restaurant;
+
+    function giveActive($route) {
+        if($route == URL::full()) {
+            return 'active';
+        }
+    }
+?>
+
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -92,8 +104,48 @@
             </div>
         </nav>
 
-        <main class="">
-            @yield('content')
+        <main>
+            <div class="container-fluid mt-5">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="list-goup">
+
+                            <div class="list-group">
+                                <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.index'))}}" href="{{ route('admin.restaurants.index') }}">home</a>
+ 
+
+
+                               @if($UserRestaurant)
+                                <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.show', $UserRestaurant))}}" href="{{ route('admin.restaurants.show', $UserRestaurant) }}">{{$restaurant->name}}</a>
+                                <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.products.index', $UserRestaurant))}}" href="{{ route('admin.restaurants.products.index', $UserRestaurant) }}">Menu</a>
+                                @if(count($restaurant->products))
+                                    <ul>
+                                        @foreach ($restaurant->products as $product)
+                                            <li class="nav-link">
+                                                <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.products.show', [$UserRestaurant, $product]))}}" href="{{ route('admin.restaurants.products.show', [$UserRestaurant, $product]) }}">{{ $product->name }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                    @endif
+                                @endif
+                                    
+
+                                
+                        
+                        
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-9">
+                        @yield('content')
+                    </div>
+                </div>
+    
+            </div>
+
         </main>
     </div>
 </body>
