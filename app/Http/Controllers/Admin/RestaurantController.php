@@ -26,8 +26,8 @@ class RestaurantController extends Controller
         
         $restaurant = $user->restaurant;
 
+
         return view('admin.restaurants.index', compact('restaurant', 'userName'));
-     
     }
 
     /**
@@ -112,6 +112,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
+
         return view('admin.restaurants.show', compact('restaurant'));
     }
 

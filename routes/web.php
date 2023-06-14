@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 
     Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
+
+    Route::resource('restaurants.products', ProductController::class)->parameters(['products' => 'product:slug']);
 });
 
 require __DIR__ . '/auth.php';
