@@ -1,5 +1,7 @@
-@extends('layouts/admin')
+@extends('layouts.admin')
 
 @section('content')
-    Prova
+    <div class="container">
+        <h1>Dashboard</h1>
+    </div>
 @endsection
