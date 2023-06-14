@@ -9,7 +9,7 @@ class Restaurant extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'address', 'cap', 'vat_number', 'logo', 'cover'];
+    protected $fillable = ['name', 'address', 'postal_code', 'vat_number', 'logo', 'cover'];
 
     public function user()
     {

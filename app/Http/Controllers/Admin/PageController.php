@@ -12,14 +12,16 @@ class PageController extends Controller
 {
     public function dashboard()
     {
-        $user_id = Auth::id();
+        // $user = Auth::user();
+        // $restaurant = $user->restaurant;
 
-        $restaurant = Restaurant::where('user_id', $user_id)->first();
+        // if ($restaurant) {
 
-        if ($restaurant) {
-            return view('admin.dashboard', compact('restaurant'));
-        } else {
-            return redirect()->route('admin.restaurants.create');
-        }
+        //     // return view('admin.index', compact('restaurant'));
+        //     return redirect()->route('admin.restaurants.index', $restaurant);
+        // } else {
+
+        //     return redirect()->route('admin.restaurants.create');
+        // }
     }
 }
