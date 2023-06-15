@@ -16,6 +16,7 @@
                     </div>
                 </div>
             @else
+                <h4 class="text-center">Inizia creando il tuo ristorante</h4>
                 <a class="btn btn-primary" href="{{ route('admin.restaurants.create') }}">Crea il tuo ristorante</a>
             @endif
 
