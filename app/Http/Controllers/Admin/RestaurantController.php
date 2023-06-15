@@ -38,9 +38,13 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        $typologies = Typology::all();
+        if (!Auth::user()->restaurant) {
+            $typologies = Typology::all();
 
-        return view('admin.restaurants.create', compact('typologies'));
+            return view('admin.restaurants.create', compact('typologies'));
+        } else {
+            return view('unauthorized');
+        }
     }
 
     /**
@@ -124,8 +128,11 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-
-        return view('admin.restaurants.show', compact('restaurant'));
+        if ($restaurant->user->id === Auth::id()) {
+            return view('admin.restaurants.show', compact('restaurant'));
+        } else {
+            return view('unauthorized');
+        }
     }
 
     /**
@@ -136,9 +143,13 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        $typologies = Typology::all();
+        if ($restaurant->user->id === Auth::id()) {
+            $typologies = Typology::all();
 
-        return view('admin.restaurants.edit', compact('restaurant', 'typologies'));
+            return view('admin.restaurants.edit', compact('restaurant', 'typologies'));
+        } else {
+            return view('unauthorized');
+        }
     }
 
     /**

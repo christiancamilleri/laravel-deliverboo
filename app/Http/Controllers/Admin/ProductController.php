@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -19,9 +20,11 @@ class ProductController extends Controller
      */
     public function index(Restaurant $restaurant)
     {
-        $products = $restaurant->products;
-
-        return view('admin.products.index', compact('restaurant', 'products'));
+        if ($restaurant->user->id === Auth::id()) {
+            return view('admin.products.show', compact('restaurant', 'product'));
+        } else {
+            return view('unauthorized');
+        }
     }
 
     /**
@@ -31,7 +34,11 @@ class ProductController extends Controller
      */
     public function create(Restaurant $restaurant)
     {
-        return view('admin.products.create', compact('restaurant'));
+        if (!Auth::user()->restaurant) {
+            return view('admin.products.create', compact('restaurant'));
+        } else {
+            return view('unauthorized');
+        }
     }
 
     /**
@@ -79,7 +86,11 @@ class ProductController extends Controller
      */
     public function show(Restaurant $restaurant, Product $product)
     {
-        return view('admin.products.show', compact('restaurant', 'product'));
+        if ($restaurant->user->id === Auth::id()) {
+            return view('admin.products.show', compact('restaurant', 'product'));
+        } else {
+            return view('unauthorized');
+        }
     }
 
     /**
@@ -90,7 +101,11 @@ class ProductController extends Controller
      */
     public function edit(Restaurant $restaurant, Product $product)
     {
-        return view('admin.products.edit', compact('restaurant', 'product'));
+        if ($restaurant->user->id === Auth::id()) {
+            return view('admin.products.edit', compact('restaurant', 'product'));
+        } else {
+            return view('unauthorized');
+        }
     }
 
     /**
