@@ -93,7 +93,7 @@
 
 
 
-        <button class="btn btn-secondary ms-4 mt-3" type="submit">Modifica progetto</button>
+        <button class="btn btn-secondary ms-4 mt-3" type="submit">Modifica ristorante</button>
  
     </form>
 </div>

@@ -86,7 +86,7 @@
 
 
 
-        <button class="btn btn-secondary ms-4 mt-3" type="submit">Crea progetto</button>
+        <button class="btn btn-secondary ms-4 mt-3" type="submit">Crea ristorante</button>
  
     </form>
 </div>

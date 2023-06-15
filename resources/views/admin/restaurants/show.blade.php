@@ -23,6 +23,13 @@
                 alt="logo" class="w-25">
 
             <div>
+                <div>
+                    @foreach($restaurant->typologies as $typology)
+                        <span class="badge" style=" background-color: {{$typology->color}}">
+                                {{$typology->name}}
+                        </span>
+                    @endforeach
+                </div>
                 <h1>{{ $restaurant->name }}</h1>
 
                 <small>{{ $restaurant->slug }}</small>
@@ -32,12 +39,14 @@
 
 
         <h2>{{ $restaurant->user->name }}</h2>
+        
 
         <ul class="list-group list-group-flush py-4">
             <li class="list-group-item">Indirizzo: {{ $restaurant->address }}</li>
             <li class="list-group-item">Partita IVA: {{ $restaurant->vat_number }}</li>
             <li class="list-group-item">Codice postale: {{ $restaurant->postal_code }}</li>
         </ul>
+
 
 
 
