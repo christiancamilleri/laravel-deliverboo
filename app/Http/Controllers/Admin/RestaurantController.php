@@ -144,7 +144,8 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Restaurant $restaurant)
-    {
+    {   
+
         // Preleviamo i formData dalla request
         $formData = $request->all();
         // Validiamo i dati inseriti dall'utente nel form

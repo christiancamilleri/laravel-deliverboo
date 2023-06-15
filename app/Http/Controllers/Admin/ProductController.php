@@ -157,16 +157,17 @@ class ProductController extends Controller
 
             'name' => 'required|max:100',
             'description' => 'required|max:65535',
-            'price' => 'required|numeric|max:999,99',
+            'price' => 'required|numeric|max:999.99|min:0.01',
             'photo' => 'image|max:4096|nullable',
         ],[
             'name.required' => 'Devi inserire il nome del prodotto',
             'name.max' => 'Il nome del prodotto deve essere al massimo di 100 caratteri',
             'description.required' => 'Devi inserire una descrizione del prodotto',
             'description.max' => 'La descrizione non deve superare i 65535 caratteri',
+            'price.required' => 'Inserisci un prezzo',
             'price.numeric' => 'Puoi inserire solo caratteri numerici',
-            'price.max' => 'Il prezzo massimo inseribile è pari a 999,99',
-
+            'price.min' => 'Il prezzo minimo è :min',
+            'price.max' => 'Il prezzo massimo è :max',
             'photo.image' => 'Il file deve esser un immagine',
             'photo.max' => 'Il file non può essere più grande di 4MB',
 
