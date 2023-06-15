@@ -87,6 +87,11 @@
 
                 </div>
                 @endforeach
+                @error('typologies')
+                    <div class="text-danger">
+                        <em> {{ $message }} </em>
+                    </div>
+                @enderror
             </div>
         </div>
         
