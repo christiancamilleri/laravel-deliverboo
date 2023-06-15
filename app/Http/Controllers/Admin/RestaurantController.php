@@ -254,7 +254,7 @@ class RestaurantController extends Controller
             'address.max' => 'Questo campo non deve superare i 255 caratteri',
             'postal_code.required' => 'Campo obbligatorio',
             'postal_code.size' => 'Il codice postale deve essere di 5 caratteri',
-            'vat_number.require' => 'Campo obbligatorio',
+            'vat_number.required' => 'Campo obbligatorio',
             'vat_number.size' => 'La partita Iva deve essere di 13 caratteri',
             'logo.image' => 'Il file deve esser un immagine',
             'logo.max' => 'Il file non può essere più grande di 4MB',
