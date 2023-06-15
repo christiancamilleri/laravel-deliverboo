@@ -254,7 +254,7 @@ class RestaurantController extends Controller
             'logo' => 'image|max:4096|nullable',
             'cover' => 'image|max:4096|nullable',
             'typologies' => 'exists:typologies,id|required|array',
-            'typologies.*' => 'accepted'
+            'typologies.*' => 'nullable'
 
 
         ])->validate();
