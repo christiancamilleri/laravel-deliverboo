@@ -104,13 +104,13 @@ class ProductController extends Controller
     {
 
         $formData = $request->all();
-        
+
         $this->validator($formData);
         // dd($request);
-        
+
         if ($request->hasFile('photo')) {
 
-            if($product->photo) {
+            if ($product->photo) {
                 Storage::delete($product->photo);
             }
 
@@ -130,7 +130,7 @@ class ProductController extends Controller
         $product->slug = Str::slug($formData['name']);
 
         $product->update($formData);
-        
+
         return to_route('admin.restaurants.products.show', [$restaurant, $product]);
     }
 
@@ -142,16 +142,17 @@ class ProductController extends Controller
      */
     public function destroy(Restaurant $restaurant, Product $product)
     {
-        if($product->photo){
+        if ($product->photo) {
             Storage::delete($product->photo);
         }
-        
+
         $product->delete();
 
         return to_route('admin.restaurants.products.index', $restaurant);
     }
 
-    private function validator($formData) {
+    private function validator($formData)
+    {
 
         $validator = Validator::make($formData, [
 
@@ -159,21 +160,8 @@ class ProductController extends Controller
             'description' => 'required|max:65535',
             'price' => 'required|numeric|max:999.99|min:0.01',
             'photo' => 'image|max:4096|nullable',
-        ],[
-            'name.required' => 'Devi inserire il nome del prodotto',
-            'name.max' => 'Il nome del prodotto deve essere al massimo di 100 caratteri',
-            'description.required' => 'Devi inserire una descrizione del prodotto',
-            'description.max' => 'La descrizione non deve superare i 65535 caratteri',
-            'price.required' => 'Inserisci un prezzo',
-            'price.numeric' => 'Puoi inserire solo caratteri numerici',
-            'price.min' => 'Il prezzo minimo è :min',
-            'price.max' => 'Il prezzo massimo è :max',
-            'photo.image' => 'Il file deve esser un immagine',
-            'photo.max' => 'Il file non può essere più grande di 4MB',
-
         ])->validate();
 
         return $validator;
-
     }
 }

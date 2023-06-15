@@ -253,25 +253,9 @@ class RestaurantController extends Controller
             'vat_number' => 'required|size:13||regex:/^[A-Z]{2}[0-9]{11}$/|unique:restaurants,vat_number,' . $restaurant_id ?? '',
             'logo' => 'image|max:4096|nullable',
             'cover' => 'image|max:4096|nullable',
-            //Aggiungere controllo almeno 1 selezionato
-            'typologies' => 'exists:typologies,id',
+            'typologies' => 'exists:typologies,id|required|array',
+            'typologies.*' => 'accepted'
 
-
-        ], [
-
-            'name.required' => 'Devi inserire il nome del ristorante',
-            'name.max' => 'Il nome del ristorante deve essere al massimo di 100 caratteri',
-            'address.required' => 'Campo obbligatorio',
-            'address.max' => 'Questo campo non deve superare i 255 caratteri',
-            'postal_code.required' => 'Campo obbligatorio',
-            'vat_number.required' => 'Campo obbligatorio',
-            'vat_number.size' => 'La partita Iva deve essere di 13 caratteri',
-            'vat_number.unique' => 'Partita IVA già presente',
-            'logo.image' => 'Il file deve esser un immagine',
-            'logo.max' => 'Il file non può essere più grande di 4MB',
-            'cover.image' => 'Il file deve esser un immagine',
-            'cover.max' => 'La dimensione del file è superiore al limite (4096 bytes)',
-            'typologies.exists' => 'La tipologia inserita non esiste',
 
         ])->validate();
 
