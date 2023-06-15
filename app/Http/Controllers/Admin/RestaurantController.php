@@ -24,7 +24,7 @@ class RestaurantController extends Controller
         $user = Auth::user();
 
         $userName = $user->name;
-        
+
         $restaurant = $user->restaurant;
 
 
@@ -53,9 +53,9 @@ class RestaurantController extends Controller
     {
         // Preleviamo i formData dalla request
         $formData = $request->all();
-        
+
         $formData['vat_number'] = $this->getVatNumber($formData['vat_number']);
-        
+
         // Validiamo i dati inseriti dall'utente nel form
         $this->validator($formData);
 
@@ -64,7 +64,7 @@ class RestaurantController extends Controller
 
 
         // Controlliamo se nel form è stato caricato un file per la cover
-        if($request->hasFile('cover')) {
+        if ($request->hasFile('cover')) {
             // In caso affermativo:
 
             // Carico il file sul server e mi salvo il percorso
@@ -73,9 +73,9 @@ class RestaurantController extends Controller
             // $newRestaurant->cover = $path;
             $formData['cover'] = $path;
         }
-        
+
         // Controlliamo se nel form è stato caricato un file per il logo
-        if($request->hasFile('logo')) {
+        if ($request->hasFile('logo')) {
             // In caso affermativo:
 
             // Carico il file sul server e mi salvo il percorso
@@ -85,18 +85,18 @@ class RestaurantController extends Controller
             $formData['logo'] = $path;
         };
 
-        
+
         // Riempiamo il nuovo ristorante con i dati fillable ricevuti dal form
         $newRestaurant->fill($formData);
-        
+
         // Calcoliamo lo slug con il metodo statico della classe Str
         // $newRestaurant->slug = Str::slug($newRestaurant->name);
         $newRestaurant->slug = Str::slug($newRestaurant->name);
         $duplicate = count(Restaurant::where('name', $newRestaurant->name)->get());
-        if($duplicate){
+        if ($duplicate) {
             $newRestaurant->slug .= '-' . $duplicate;
         }
-        
+
         // Preleviamo lo user_id dell'utente loggato al momento della chiamata
         $newRestaurant->user_id = Auth::id();
 
@@ -104,13 +104,13 @@ class RestaurantController extends Controller
         $newRestaurant->save();
 
         // Controllo se le typologies esistono effettivamente nel database
-        if(array_key_exists('typologies', $formData)) {
+        if (array_key_exists('typologies', $formData)) {
             // In caso affermativo:
 
             // Creo un campo nella tabella pivot di tipo [$restaurant->id, $typology->id] per ogni typologies selezionata nel form
             $newRestaurant->typologies()->attach($formData['typologies']);
         }
-        
+
         // Reindirizzo alla show del restaurant appena creato
         // return redirect()->route('admin.restaurants.show', $newRestaurant);
         return to_route('admin.restaurants.show', $newRestaurant);
@@ -149,41 +149,41 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Restaurant $restaurant)
-    {   
+    {
 
         // Preleviamo i formData dalla request
         $formData = $request->all();
-        
+
         $formData['vat_number'] = $this->getVatNumber($formData['vat_number']);
-        
+
         // Validiamo i dati inseriti dall'utente nel form
         $this->validator($formData, $restaurant->id);
-    
+
         // Controlliamo se nel form è stato caricato un file per la cover
-        if($request->hasFile('cover')) {
+        if ($request->hasFile('cover')) {
             // In caso affermativo:
 
             // Se era presente un'immagine nel database
-            if($restaurant->cover){
-                
+            if ($restaurant->cover) {
+
                 // cancello la vecchia immagine "cover"
                 Storage::delete($restaurant->cover);
             }
 
             // Carico il file sul server e mi salvo il percorso
             $path = Storage::put('restaurants_covers', $request->cover);
-            
+
             // Inserisco il percorso nell'apposita colonna di restaurant
             // $restaurant->cover = $path;
             $formData['cover'] = $path;
         }
-        
+
         // Controlliamo se nel form è stato caricato un file per il logo
-        if($request->hasFile('logo')) {
+        if ($request->hasFile('logo')) {
             // In caso affermativo:
 
             // Se era presente un'immagine nel database
-            if($restaurant->logo){
+            if ($restaurant->logo) {
                 Storage::delete($restaurant->logo);
             }
             // Carico il file sul server e mi salvo il percorso
@@ -192,27 +192,27 @@ class RestaurantController extends Controller
             // $restaurant->logo = $path;
             $formData['logo'] = $path;
         };
-    
+
         // Calcoliamo lo slug con il metodo statico della classe Str
         $restaurant->slug = Str::slug($formData['name']);
         $duplicate = count(Restaurant::where('name', $formData['name'])->get());
 
-        if($duplicate){
+        if ($duplicate) {
             $restaurant->slug .= '-' . $duplicate;
         }
-        
+
         // Salvo nel database il nuovo restaurant con tutte le info
         $restaurant->update($formData);
-    
+
         // Controllo se le typologies esistono effettivamente nel database
-        if(array_key_exists('typologies', $formData)) { 
-    
+        if (array_key_exists('typologies', $formData)) {
+
             // Creo un campo nella tabella pivot di tipo [$restaurant->id, $typology->id] per ogni typologies selezionata nel form
             $restaurant->typologies()->sync($formData['typologies']);
-        }else {
+        } else {
             $restaurant->typologies()->detach();
         }
-        
+
         // Reindirizzo alla show del restaurant appena creato
         // return redirect()->route('admin.restaurants.show', $newRestaurant);
         return to_route('admin.restaurants.show', $restaurant);
@@ -226,13 +226,13 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        if($restaurant->cover) {
+        if ($restaurant->cover) {
 
-            
+
             Storage::delete($restaurant->cover);
         }
-        
-        if($restaurant->logo) {
+
+        if ($restaurant->logo) {
 
             Storage::delete($restaurant->logo);
         }
@@ -241,23 +241,23 @@ class RestaurantController extends Controller
 
         return to_route('admin.restaurants.index');
     }
-    
-    
-    private function validator($formData, $restaurant_id = null) {
+
+
+    private function validator($formData, $restaurant_id = null)
+    {
 
         $validator = Validator::make($formData, [
             'name' => 'required|max:100',
             'address' => 'required|max:255',
             'postal_code' => 'required|regex:/^[0-9]{5}$/',
-            //Aggiungere controllo regex
-            'vat_number' => 'required|size:13',
+            'vat_number' => 'required|size:13||regex:/^[A-Z]{2}[0-9]{11}$/|unique:restaurants,vat_number,' . $restaurant_id ?? '',
             'logo' => 'image|max:4096|nullable',
             'cover' => 'image|max:4096|nullable',
             //Aggiungere controllo almeno 1 selezionato
             'typologies' => 'exists:typologies,id',
 
 
-        ],[
+        ], [
 
             'name.required' => 'Devi inserire il nome del ristorante',
             'name.max' => 'Il nome del ristorante deve essere al massimo di 100 caratteri',
@@ -276,13 +276,11 @@ class RestaurantController extends Controller
         ])->validate();
 
         return $validator;
-
     }
 
-    private function getVatNumber($value){
+    private function getVatNumber($value)
+    {
 
         return strtoupper($value);
-    
     }
-
 }
