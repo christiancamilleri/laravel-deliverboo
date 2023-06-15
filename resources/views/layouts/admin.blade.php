@@ -2,6 +2,7 @@
     $user = Auth::user();
 
     $UserRestaurant = Auth::user()->restaurant;
+    
 
     function giveActive($route) {
         if($route == URL::full()) {
@@ -21,7 +22,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>
+        DeliveBoo
+        {{-- {{ config('app.name', 'Laravel') }} --}}
+    </title>
 
 
     <!-- Fonts -->
@@ -39,7 +43,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ route('admin.restaurants.index') }}">
-                    {{$user->restaurant?->name ?? 'DeliveBoo'}}
+                    Deliveboo
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
 
@@ -105,12 +109,12 @@
                                 <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.index'))}}" href="{{ route('admin.restaurants.index') }}">home</a>
  
                                @if($UserRestaurant)
-                                <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.show', $UserRestaurant))}}" href="{{ route('admin.restaurants.show', $UserRestaurant) }}">{{$restaurant->name}}</a>
+                                <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.show', $UserRestaurant))}}" href="{{ route('admin.restaurants.show', $UserRestaurant) }}">{{$UserRestaurant->name}}</a>
                                 <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.products.index', $UserRestaurant))}}" href="{{ route('admin.restaurants.products.index', $UserRestaurant) }}">Menu</a>
                                 <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.products.create', $UserRestaurant))}}" href="{{ route('admin.restaurants.products.create', $UserRestaurant) }}"><i class="fa-regular fa-square-plus"></i> Aggiugi un prodotto</a>
-                                    @if(count($restaurant->products))
+                                    @if(count($UserRestaurant->products))
                                     <ul>
-                                        @foreach ($restaurant->products as $product)
+                                        @foreach ($UserRestaurant->products as $product)
                                             <li class="nav-link">
                                                 <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.products.show', [$UserRestaurant, $product]))}}" href="{{ route('admin.restaurants.products.show', [$UserRestaurant, $product]) }}">{{ $product->name }}</a>
                                             </li>
