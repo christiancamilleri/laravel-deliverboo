@@ -260,7 +260,7 @@ class RestaurantController extends Controller
             'logo.max' => 'Il file non può essere più grande di 4MB',
             'cover.image' => 'Il file deve esser un immagine',
             'cover.max' => 'La dimensione del file è superiore al limite (4096 bytes)',
-            'typologies.extist' => 'La tipologia inserita non esiste'
+            'typologies.exists' => 'La tipologia inserita non esiste'
 
         ])->validate();
 
