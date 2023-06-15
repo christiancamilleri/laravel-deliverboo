@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 
 class RestaurantController extends Controller
@@ -52,11 +53,15 @@ class RestaurantController extends Controller
     {
         // Preleviamo i formData dalla request
         $formData = $request->all();
+        
+        $formData['vat_number'] = $this->getVatNumber($formData['vat_number']);
+        
         // Validiamo i dati inseriti dall'utente nel form
         $this->validator($formData);
 
         // Creiamo un nuovo oggetto Restaurant
         $newRestaurant = new Restaurant();
+
 
         // Controlliamo se nel form è stato caricato un file per la cover
         if($request->hasFile('cover')) {
@@ -148,8 +153,11 @@ class RestaurantController extends Controller
 
         // Preleviamo i formData dalla request
         $formData = $request->all();
+        
+        $formData['vat_number'] = $this->getVatNumber($formData['vat_number']);
+        
         // Validiamo i dati inseriti dall'utente nel form
-        $this->validator($formData);
+        $this->validator($formData, $restaurant->id);
     
         // Controlliamo se nel form è stato caricato un file per la cover
         if($request->hasFile('cover')) {
@@ -235,17 +243,19 @@ class RestaurantController extends Controller
     }
     
     
-    private function validator($formData) {
+    private function validator($formData, $restaurant_id = null) {
 
         $validator = Validator::make($formData, [
-            
             'name' => 'required|max:100',
             'address' => 'required|max:255',
-            'postal_code' => 'required|size:5',
+            'postal_code' => 'required|regex:/^[0-9]{5}$/',
+            //Aggiungere controllo regex
             'vat_number' => 'required|size:13',
             'logo' => 'image|max:4096|nullable',
             'cover' => 'image|max:4096|nullable',
+            //Aggiungere controllo almeno 1 selezionato
             'typologies' => 'exists:typologies,id',
+
 
         ],[
 
@@ -254,20 +264,25 @@ class RestaurantController extends Controller
             'address.required' => 'Campo obbligatorio',
             'address.max' => 'Questo campo non deve superare i 255 caratteri',
             'postal_code.required' => 'Campo obbligatorio',
-            'postal_code.size' => 'Il codice postale deve essere di 5 caratteri',
             'vat_number.required' => 'Campo obbligatorio',
             'vat_number.size' => 'La partita Iva deve essere di 13 caratteri',
+            'vat_number.unique' => 'Partita IVA già presente',
             'logo.image' => 'Il file deve esser un immagine',
             'logo.max' => 'Il file non può essere più grande di 4MB',
             'cover.image' => 'Il file deve esser un immagine',
             'cover.max' => 'La dimensione del file è superiore al limite (4096 bytes)',
-            'typologies.exists' => 'La tipologia inserita non esiste'
+            'typologies.exists' => 'La tipologia inserita non esiste',
 
         ])->validate();
 
         return $validator;
 
     }
+
+    private function getVatNumber($value){
+
+        return strtoupper($value);
     
     }
 
+}

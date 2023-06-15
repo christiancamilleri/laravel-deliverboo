@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('slug', 100)->unique();
             $table->string('address');
             $table->string('postal_code', 5);
-            $table->string('vat_number', 13);
+            $table->string('vat_number', 13)->unique();
             $table->string('logo')->nullable();
             $table->string('cover')->nullable();
 

@@ -9,9 +9,9 @@
         @method('PUT')
 
         <div class="my-5 form-check">
-            <label class="form-label" for="name">Nome</label>
+            <label class="form-label" for="name">Nome *</label>
             <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name"
-                value="{{ old('name') ?? $product->name }}">
+                value="{{ old('name') ?? $product->name }}" required>
             @error('name')
                 <div class="invalid-feedback">
                     <em> {{ $message }} </em>
@@ -20,10 +20,10 @@
         </div>
 
         <div class="my-5 form-check">
-            <label class="form-label" for="price">Prezzo</label>
+            <label class="form-label" for="price">Prezzo *</label>
             <input step="0.01" class="form-control @error('price') is-invalid @enderror" type="number"
-                id="price" name="price" value="{{ old('price') ?? $product->price }}">
-            @error('address')
+                id="price" name="price" value="{{ old('price') ?? $product->price }}" required>
+            @error('price')
                 <div class="invalid-feedback">
                     <em> {{ $message }} </em>
                 </div>
@@ -36,9 +36,9 @@
         </div>
 
         <div class="my-5 form-check">
-            <label class="form-label" for="description">Descrizione</label>
+            <label class="form-label" for="description">Descrizione *</label>
             <textarea class="form-control @error('description') is-invalid @enderror" type="number" id="description"
-                name="description">{{ old('description') ?? $product->description }}</textarea>
+                name="description" required>{{ old('description') ?? $product->description }}</textarea>
             @error('description')
                 <div class="invalid-feedback">
                     <em> {{ $message }} </em>
@@ -47,7 +47,7 @@
         </div>
 
         <div class="my-5 form-check">
-            <label class="form-label" for="photo">Foto :</label>
+            <label class="form-label" for="photo">Foto</label>
             <input class="form-control @error('photo') is-invalid @enderror" type="file" id="photo"
                 name="photo">
             @error('photo')

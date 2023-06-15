@@ -9,8 +9,8 @@
         @csrf
 
         <div class="my-5 form-check" >
-            <label class="form-label" for="name">Nome ristorante:</label>
-            <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name" value="{{old('name') ?? $restaurant->name}}">
+            <label class="form-label" for="name">Nome ristorante *</label>
+            <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name" value="{{old('name') ?? $restaurant->name}}" required>
             @error('name')
             <div class="invalid-feedback">
                 <em> {{$message}} </em>
@@ -19,8 +19,8 @@
         </div>
 
         <div class="my-5 form-check" >
-            <label class="form-label" for="address">Indirizzo:</label>
-            <input class="form-control @error('address') is-invalid @enderror" type="text" id="address" name="address" value="{{old('address') ?? $restaurant->address}}">
+            <label class="form-label" for="address">Indirizzo *</label>
+            <input class="form-control @error('address') is-invalid @enderror" type="text" id="address" name="address" value="{{old('address') ?? $restaurant->address}}" required>
             @error('address')
             <div class="invalid-feedback">
                 <em> {{$message}} </em>
@@ -30,8 +30,8 @@
 
 
         <div class="my-5 form-check" >
-            <label class="form-label" for="postal_code">Cap:</label>
-            <input class="form-control @error('postal_code') is-invalid @enderror" type="number" id="postal_code" name="postal_code" value="{{old('postal_code') ?? $restaurant->postal_code}}">
+            <label class="form-label" for="postal_code">Cap *</label>
+            <input class="form-control @error('postal_code') is-invalid @enderror" pattern="[0-9]{5}" type="text" id="postal_code" name="postal_code" value="{{old('postal_code') ?? $restaurant->postal_code}}" required>
             @error('postal_code')
             <div class="invalid-feedback">
                 <em> {{$message}} </em>
@@ -40,9 +40,9 @@
         </div>
 
 
-        <div class="my-5 form-check" >
-            <label class="form-label" for="vat_number">Partita IVA:</label>
-            <input class="form-control @error('vat_number') is-invalid @enderror" type="text" id="vat_number" name="vat_number" value="{{old('vat_number') ?? $restaurant->vat_number}}">
+        <div class="my-5 form-check">
+            <label class="form-label" for="vat_number">Partita IVA *</label>
+            <input class="form-control @error('vat_number') is-invalid @enderror" type="text" style="text-transform: uppercase;" pattern="[A-Za-z]{2}[0-9]{11}" id="vat_number" name="vat_number" value="{{old('vat_number') ?? $restaurant->vat_number}}" required>
             @error('vat_number')
             <div class="invalid-feedback">
                 <em> {{$message}} </em>
@@ -51,8 +51,8 @@
         </div>
 
         <div class="my-5 form-check" >
-            <label class="form-label" for="logo">Immagine logo:</label>
-            <input class="form-control @error('logo') is-invalid @enderror" type="file" id="logo" name="logo" >
+                <label class="form-label" for="logo">Immagine logo</label>
+                <input class="form-control @error('logo') is-invalid @enderror" type="file" id="logo" name="logo" >
             @error('logo')
             <div class="invalid-feedback">
                 <em> {{$message}} </em>
@@ -61,7 +61,7 @@
         </div>
 
         <div class="my-5 form-check" >
-            <label class="form-label" for="cover">Immagine copertina:</label>
+            <label class="form-label" for="cover">Immagine copertina</label>
             <input class="form-control @error('cover') is-invalid @enderror" type="file" id="cover" name="cover" >
             @error('cover')
             <div class="invalid-feedback">
@@ -73,10 +73,10 @@
 
 
         <div class="form-group form-check my-5 form-group d-flex gap-3 align-items-center">
-            <label>Tipologia:</label>
+            <label>Tipologia *</label>
             <div class="row">
                 @foreach($typologies as $typology)
-                <div class="form-check col-2">
+                <div class="form-check col-3 d-flex align-items-center gap-2">
 
                     @if($errors->any())
                     <input type="checkbox" id="typology-{{$typology->id}}" name="typologies[]" value="{{$typology->id}}" @checked(in_array($typology->id, old('typologies', [])))>

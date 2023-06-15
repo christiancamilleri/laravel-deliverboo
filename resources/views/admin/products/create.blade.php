@@ -8,9 +8,9 @@
             @csrf
 
             <div class="my-5 form-check">
-                <label class="form-label" for="name">Nome</label>
+                <label class="form-label" for="name">Nome *</label>
                 <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name"
-                    value="{{ old('name') }}">
+                    value="{{ old('name') }}" required>
                 @error('name')
                     <div class="invalid-feedback">
                         <em> {{ $message }} </em>
@@ -19,9 +19,9 @@
             </div>
 
             <div class="my-5 form-check">
-                <label class="form-label" for="price">Prezzo</label>
+                <label class="form-label" for="price">Prezzo *</label>
                 <input step="0.01" class="form-control @error('price') is-invalid @enderror" type="number"
-                    id="price" name="price" value="{{ old('price') }}">
+                    id="price" name="price" value="{{ old('price') }}" required>
                 @error('price')
                     <div class="invalid-feedback">
                         <em> {{ $message }} </em>
@@ -30,24 +30,24 @@
             </div>
 
             <div class="form-check form-switch">
+                <label class="form-check-label" for="flexSwitchCheckChecked">Disponibile</label>
                 <input class="form-check-input" type="checkbox" role="switch" name="visible" id="visible"
                     @checked(old('visible'))>
-                <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
             </div>
 
             <div class="my-5 form-check">
-                <label class="form-label" for="description">Descrizione</label>
+                <label class="form-label" for="description">Descrizione *</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" type="number" id="description"
-                    name="description">{{ old('description') }}</textarea>
+                name="description" required>{{ old('description') }}</textarea>
                 @error('description')
-                    <div class="invalid-feedback">
-                        <em> {{ $message }} </em>
-                    </div>
+                <div class="invalid-feedback">
+                    <em> {{ $message }} </em>
+                </div>
                 @enderror
             </div>
 
             <div class="my-5 form-check">
-                <label class="form-label" for="photo">Foto :</label>
+                <label class="form-label" for="photo">Foto</label>
                 <input class="form-control @error('photo') is-invalid @enderror" type="file" id="photo"
                     name="photo">
                 @error('photo')
