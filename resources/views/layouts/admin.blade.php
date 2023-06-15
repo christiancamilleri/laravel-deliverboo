@@ -1,14 +1,14 @@
 <?php
-    $user = Auth::user();
+$user = Auth::user();
 
-    $userRestaurant = Auth::user()->restaurant;
-    
+$userRestaurant = Auth::user()->restaurant;
 
-    function giveActive($route) {
-        if($route == URL::full()) {
-            return 'active';
-        }
+function giveActive($route)
+{
+    if ($route == URL::full()) {
+        return 'active';
     }
+}
 ?>
 
 
@@ -26,6 +26,7 @@
         DeliveBoo
         {{-- {{ config('app.name', 'Laravel') }} --}}
     </title>
+
 
 
     <!-- Fonts -->
@@ -105,37 +106,48 @@
             <div class="container-fluid mt-5">
                 <div class="row">
                     <div class="col-2">
-                            <div class="list-group">
-                                <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.index'))}}" href="{{ route('admin.restaurants.index') }}">Home</a>
- 
-                               @if($userRestaurant)
-                                <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.show', $userRestaurant))}}" href="{{ route('admin.restaurants.show', $userRestaurant) }}">{{$userRestaurant->name}}</a>
-                                <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.products.index', $userRestaurant))}}" href="{{ route('admin.restaurants.products.index', $userRestaurant) }}">Menu</a>
-                                <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.products.create', $userRestaurant))}}" href="{{ route('admin.restaurants.products.create', $userRestaurant) }}"><i class="fa-regular fa-square-plus"></i> Aggiugi un prodotto</a>
-                                    @if(count($userRestaurant->products))
+                        <div class="list-group">
+                            <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.index')) }}"
+                                href="{{ route('admin.restaurants.index') }}">Home</a>
+
+                            @if ($userRestaurant)
+                                <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.show', $userRestaurant)) }}"
+                                    href="{{ route('admin.restaurants.show', $userRestaurant) }}">{{ $userRestaurant->name }}</a>
+                                <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.products.index', $userRestaurant)) }}"
+                                    href="{{ route('admin.restaurants.products.index', $userRestaurant) }}">Menu</a>
+                                <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.products.create', $userRestaurant)) }}"
+                                    href="{{ route('admin.restaurants.products.create', $userRestaurant) }}"><i
+                                        class="fa-regular fa-square-plus"></i> Aggiugi un prodotto</a>
+                                @if (count($userRestaurant->products))
                                     <ul>
                                         @foreach ($userRestaurant->products as $product)
                                             <li class="nav-link">
-                                                <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.products.show', [$userRestaurant, $product]))}}" href="{{ route('admin.restaurants.products.show', [$userRestaurant, $product]) }}">{{ $product->name }}</a>
+                                                <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.products.show', [$userRestaurant, $product])) }}"
+                                                    href="{{ route('admin.restaurants.products.show', [$userRestaurant, $product]) }}">{{ $product->name }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
-                                    @endif
-                                @else
-                                <a class="list-group-item list-group-item-action {{giveActive(route('admin.restaurants.create'))}}" href="{{ route('admin.restaurants.create') }}"><i class="fa-regular fa-square-plus"></i> Crea il ristorante</a>
                                 @endif
-                            </div>
+                            @else
+                                <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.create')) }}"
+                                    href="{{ route('admin.restaurants.create') }}"><i
+                                        class="fa-regular fa-square-plus"></i> Crea il ristorante</a>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="col-9">
                         @yield('content')
                     </div>
                 </div>
-    
+
             </div>
 
         </main>
     </div>
+
+
+    @stack('scripts')
 </body>
 
 </html>

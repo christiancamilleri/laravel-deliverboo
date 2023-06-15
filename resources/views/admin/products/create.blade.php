@@ -10,7 +10,7 @@
             <div class="my-5 form-check">
                 <label class="form-label" for="name">Nome *</label>
                 <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name"
-                    value="{{ old('name') }}" required>
+                    value="{{ old('name') }}" required maxlength="100">
                 @error('name')
                     <div class="invalid-feedback">
                         <em> {{ $message }} </em>
@@ -21,7 +21,7 @@
             <div class="my-5 form-check">
                 <label class="form-label" for="price">Prezzo *</label>
                 <input step="0.01" class="form-control @error('price') is-invalid @enderror" type="number"
-                    id="price" name="price" value="{{ old('price') }}" required>
+                    id="price" name="price" value="{{ old('price') }}" required min="0.01" max="999.99">
                 @error('price')
                     <div class="invalid-feedback">
                         <em> {{ $message }} </em>
@@ -38,18 +38,18 @@
             <div class="my-5 form-check">
                 <label class="form-label" for="description">Descrizione *</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" type="number" id="description"
-                name="description" required>{{ old('description') }}</textarea>
+                    name="description" required maxlength="65535">{{ old('description') }}</textarea>
                 @error('description')
-                <div class="invalid-feedback">
-                    <em> {{ $message }} </em>
-                </div>
+                    <div class="invalid-feedback">
+                        <em> {{ $message }} </em>
+                    </div>
                 @enderror
             </div>
 
             <div class="my-5 form-check">
                 <label class="form-label" for="photo">Foto</label>
                 <input class="form-control @error('photo') is-invalid @enderror" type="file" id="photo"
-                    name="photo">
+                    name="photo" accept=".png, .jpg, .jpeg">
                 @error('photo')
                     <div class="invalid-feedback">
                         <em> {{ $message }} </em>

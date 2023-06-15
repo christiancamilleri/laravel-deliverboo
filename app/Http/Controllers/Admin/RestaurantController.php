@@ -194,11 +194,13 @@ class RestaurantController extends Controller
         };
 
         // Calcoliamo lo slug con il metodo statico della classe Str
-        $restaurant->slug = Str::slug($formData['name']);
-        $duplicate = count(Restaurant::where('name', $formData['name'])->get());
+        if ($formData['name'] != $restaurant->name) {
+            $restaurant->slug = Str::slug($formData['name']);
+            $duplicate = count(Restaurant::where('name', $formData['name'])->get());
 
-        if ($duplicate) {
-            $restaurant->slug .= '-' . $duplicate;
+            if ($duplicate) {
+                $restaurant->slug .= '-' . $duplicate;
+            }
         }
 
         // Salvo nel database il nuovo restaurant con tutte le info
