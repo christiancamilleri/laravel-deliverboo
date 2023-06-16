@@ -19,20 +19,24 @@ class ProductSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 30; $i++) {
-            $product = new Product();
 
-            $restaurants = Restaurant::all();
-            $randomRestaurant = $faker->randomElement($restaurants);
-            $product->restaurant_id = $randomRestaurant->id;
+        $restaurants = Restaurant::all();
+        foreach ($restaurants as $restaurant) {
+            $randomProductsNumber = $faker->numberBetween(5, 10);
 
-            $faker->addProvider(new FakerRestaurant($faker));
-            $product->name = $faker->foodName();
-            $product->slug = Str::slug($product->name, '-');
-            $product->description = $faker->paragraph();
-            $product->price = $faker->randomFloat(2, 0, 999);
+            for ($i = 0; $i < $randomProductsNumber; $i++) {
+                $product = new Product();
 
-            $product->save();
+                $product->restaurant_id = $restaurant->id;
+
+                $faker->addProvider(new FakerRestaurant($faker));
+                $product->name = $faker->foodName();
+                $product->slug = Str::slug($product->name, '-');
+                $product->description = $faker->paragraph();
+                $product->price = $faker->randomFloat(2, 0, 30);
+
+                $product->save();
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ class ProductController extends Controller
     public function index(Restaurant $restaurant)
     {
         if ($restaurant->user->id === Auth::id()) {
-            return view('admin.products.show', compact('restaurant', 'product'));
+            return view('admin.products.index', compact('restaurant'));
         } else {
             return view('unauthorized');
         }
@@ -34,7 +34,7 @@ class ProductController extends Controller
      */
     public function create(Restaurant $restaurant)
     {
-        if (!Auth::user()->restaurant) {
+        if ($restaurant->user->id === Auth::id()) {
             return view('admin.products.create', compact('restaurant'));
         } else {
             return view('unauthorized');

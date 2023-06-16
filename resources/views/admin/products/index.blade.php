@@ -11,9 +11,9 @@
         </div>
 
 
-        @if (count($products))
+        @if (count($restaurant->products))
             <div class="row row-gap-4 my-5">
-                @foreach ($products as $product)
+                @foreach ($restaurant->products as $product)
                     <div class="col-12 col-sm-12 col-lg-6 col-xl-4">
                         <div class="card">
                             <img src="{{ $product->photo ? asset('storage/' . $product->photo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
@@ -28,7 +28,8 @@
                                     <span class="badge rounded-pill text-bg-danger card-title">Non disponibile</span>
                                 @endif
                                 <div>
-                                    <a href="{{ route('admin.restaurants.products.show', [$restaurant->slug, $product->slug]) }}" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                    <a href="{{ route('admin.restaurants.products.show', [$restaurant->slug, $product->slug]) }}"
+                                        class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></a>
                                 </div>
                             </div>
                         </div>
