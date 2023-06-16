@@ -69,7 +69,11 @@ class ProductController extends Controller
             $newProduct->visible = 0;
         }
 
-        $newProduct->slug = Str::slug($newProduct->name);
+        $newProduct->slug = Str::slug($formData['name']);
+        // $duplicate = count(Product::where('restaurant_id', $restaurant->id)->where('slug', $newProduct->slug)->get());
+        // if ($duplicate) {
+        //     $newProduct->slug .= '-' . $duplicate;
+        // }
 
         $newProduct->restaurant_id = $restaurant->id;
 
@@ -134,15 +138,19 @@ class ProductController extends Controller
             $formData['photo'] = $path;
         }
 
-        $product->fill($formData);
-
         if (array_key_exists('visible', $formData)) {
             $product->visible = 1;
         } else {
             $product->visible = 0;
         }
 
+        // if ($formData['name'] != $product->name) {
         $product->slug = Str::slug($formData['name']);
+        //     $duplicate = count(Product::where('restaurant_id', $restaurant->id)->where('slug', $product->slug)->get());
+        //     if ($duplicate) {
+        //         $product->slug .= '-' . $duplicate;
+        //     }
+        // }
 
         $product->update($formData);
 

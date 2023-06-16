@@ -31,7 +31,13 @@ class ProductSeeder extends Seeder
 
                 $faker->addProvider(new FakerRestaurant($faker));
                 $product->name = $faker->foodName();
-                $product->slug = Str::slug($product->name, '-');
+
+                $product->slug = Str::slug($product->name);
+                // $duplicate = count(Product::where('restaurant_id', $product->restaurant_id)->where('slug', $product->slug)->get());
+                // if ($duplicate) {
+                //     $product->slug .= '-' . $duplicate;
+                // }
+
                 $product->description = $faker->paragraph();
                 $product->price = $faker->randomFloat(2, 0, 30);
 
