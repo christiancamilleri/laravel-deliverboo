@@ -94,19 +94,7 @@ class RestaurantController extends Controller
         $newRestaurant->fill($formData);
 
         // Calcoliamo lo slug con il metodo statico della classe Str
-        // $newRestaurant->slug = Str::slug($newRestaurant->name);
-        $newRestaurant->slug = Str::slug($newRestaurant->name);
-
-
-        if (count(Restaurant::where('slug', $newRestaurant->slug)->get())) {
-            
-            $counter = 1;
-            while (count(Restaurant::where('slug', $newRestaurant->slug . '-' . ($counter))->get())) {
-                $counter++;
-            };
-
-            $newRestaurant->slug .= '-' . ( $counter);
-        }
+        $newRestaurant->slug = $this->validateSlug(Str::slug($newRestaurant->name));
 
 
         // Preleviamo lo user_id dell'utente loggato al momento della chiamata
@@ -212,16 +200,10 @@ class RestaurantController extends Controller
             $formData['logo'] = $path;
         };
 
-        // Calcoliamo lo slug con il metodo statico della classe Str
+        // Se è stato modificato il nome del ristorante
         if ($formData['name'] != $restaurant->name) {
-            $restaurant->slug = Str::slug($formData['name']);
-            
-            $counter = 1;
-            while (count(Restaurant::where('slug', $restaurant->slug . '-' . ($counter))->get())) {
-                $counter++;
-            };
-
-            $restaurant->slug .= '-' . ( $counter);
+            // Calcoliamo lo slug con il metodo statico della classe Str
+            $restaurant->slug = $this->validateSlug(Str::slug($formData['name']));
         }
 
         // Salvo nel database il nuovo restaurant con tutte le info
@@ -289,5 +271,21 @@ class RestaurantController extends Controller
     {
 
         return strtoupper($value);
+    }
+
+    private function validateSlug($slug)
+    {
+        // Se esistono già ristoranti con slug uguale
+        if (count(Restaurant::where('slug', $slug)->get())) {
+            // Controlliamo quale è il primo slug libero nella forma 'slug'-empty_slot 
+            $firstEmptySlugSlot = 1;
+            while (count(Restaurant::where('slug', $slug . '-' . ($firstEmptySlugSlot))->get())) {
+                $firstEmptySlugSlot++;
+            };
+            // Componiamo il nuovo slug
+            $slug .= '-' . ($firstEmptySlugSlot);
+        }
+
+        return $slug;
     }
 }
