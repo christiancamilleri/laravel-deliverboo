@@ -28,7 +28,7 @@
 
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="">
+                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel">
                         DeliveBoo
                         {{-- <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 150px">
@@ -48,12 +48,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
+                            {{-- <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a> --}}
                         </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto  text-center">
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
@@ -96,3 +96,26 @@
 </body>
 
 </html>
+
+
+<style>
+    nav.navbar.navbar-expand-md.navbar-light.bg-white.shadow-sm {
+        font-weight: bold;
+        background-color: #fc8200 !important;
+    }
+
+    .navbar-brand.d-flex.align-items-center  {
+        font-size: 35px;
+        color: white;
+    }
+
+    .nav-link {
+        color: white
+    }
+
+    button.navbar-toggler {
+        border: 1px solid white;
+        background-color: white;
+    }
+
+</style>
