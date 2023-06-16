@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -51,7 +52,9 @@ class ProductController extends Controller
     {
         $formData = $request->all();
 
-        $this->validator($formData);
+        $formData['slug'] = Str::slug($formData['name']);
+
+        $this->validator($formData, $restaurant->id);
 
         $newProduct = new Product();
 
@@ -69,14 +72,8 @@ class ProductController extends Controller
             $newProduct->visible = 0;
         }
 
-        $newProduct->slug = Str::slug($formData['name']);
-        // $duplicate = count(Product::where('restaurant_id', $restaurant->id)->where('slug', $newProduct->slug)->get());
-        // if ($duplicate) {
-        //     $newProduct->slug .= '-' . $duplicate;
-        // }
-
+        $newProduct->slug = $formData['slug'];
         $newProduct->restaurant_id = $restaurant->id;
-
         $newProduct->save();
 
         return to_route('admin.restaurants.products.show', [$restaurant, $newProduct]);
@@ -121,11 +118,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant, Product $product)
     {
-
         $formData = $request->all();
 
-        $this->validator($formData);
-        // dd($request);
+        $formData['slug'] = Str::slug($formData['name']);
+
+        $this->validator($formData, $restaurant->id, $product->id);
 
         if ($request->hasFile('photo')) {
 
@@ -144,13 +141,7 @@ class ProductController extends Controller
             $product->visible = 0;
         }
 
-        // if ($formData['name'] != $product->name) {
-        $product->slug = Str::slug($formData['name']);
-        //     $duplicate = count(Product::where('restaurant_id', $restaurant->id)->where('slug', $product->slug)->get());
-        //     if ($duplicate) {
-        //         $product->slug .= '-' . $duplicate;
-        //     }
-        // }
+        $product->slug = $formData['slug'];
 
         $product->update($formData);
 
@@ -174,8 +165,15 @@ class ProductController extends Controller
         return to_route('admin.restaurants.products.index', $restaurant);
     }
 
-    private function validator($formData)
+    private function validator($formData, $restaurantId, $productId = null)
     {
+        $rule = Rule::unique('products')->where(function ($query) use ($restaurantId) {
+            return $query->where('restaurant_id', $restaurantId);
+        });
+
+        if ($productId) {
+            $rule->ignore($productId);
+        };
 
         $validator = Validator::make($formData, [
 
@@ -183,6 +181,9 @@ class ProductController extends Controller
             'description' => 'required|max:65535',
             'price' => 'required|numeric|max:999.99|min:0.01',
             'photo' => 'image|max:4096|nullable',
+            'slug' => $rule,
+        ], [
+            'slug.*' => 'Esiste già un prodotto con questo nome',
         ])->validate();
 
         return $validator;

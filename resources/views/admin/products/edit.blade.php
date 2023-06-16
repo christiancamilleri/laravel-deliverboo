@@ -18,6 +18,11 @@
                         <em> {{ $message }} </em>
                     </div>
                 @enderror
+                @error('slug')
+                    <div class="text-danger">
+                        <em> {{ $message }} </em>
+                    </div>
+                @enderror
             </div>
 
             <div class="my-5 form-check">
