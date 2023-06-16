@@ -33,9 +33,9 @@
             </div>
 
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" name="visible" id="visible"
-                    @checked(old('visible') ?? $product->visible)>
-                <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+                <label class="form-check-label" for="visible">Disponibile</label>
+                <input class="form-check-input" type="checkbox" role="switch" name="visible" id="visible" checked
+                    autocomplete @checked(old('visible') ?? $product->visible)>
             </div>
 
             <div class="my-5 form-check">
