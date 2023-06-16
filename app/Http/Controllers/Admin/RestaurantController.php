@@ -96,10 +96,18 @@ class RestaurantController extends Controller
         // Calcoliamo lo slug con il metodo statico della classe Str
         // $newRestaurant->slug = Str::slug($newRestaurant->name);
         $newRestaurant->slug = Str::slug($newRestaurant->name);
-        $duplicate = count(Restaurant::where('name', $newRestaurant->name)->get());
-        if ($duplicate) {
-            $newRestaurant->slug .= '-' . $duplicate;
+
+
+        if (count(Restaurant::where('slug', $newRestaurant->slug)->get())) {
+            
+            $counter = 1;
+            while (count(Restaurant::where('slug', $newRestaurant->slug . '-' . ($counter))->get())) {
+                $counter++;
+            };
+
+            $newRestaurant->slug .= '-' . ( $counter);
         }
+
 
         // Preleviamo lo user_id dell'utente loggato al momento della chiamata
         $newRestaurant->user_id = Auth::id();
@@ -207,11 +215,13 @@ class RestaurantController extends Controller
         // Calcoliamo lo slug con il metodo statico della classe Str
         if ($formData['name'] != $restaurant->name) {
             $restaurant->slug = Str::slug($formData['name']);
-            $duplicate = count(Restaurant::where('name', $formData['name'])->get());
+            
+            $counter = 1;
+            while (count(Restaurant::where('slug', $restaurant->slug . '-' . ($counter))->get())) {
+                $counter++;
+            };
 
-            if ($duplicate) {
-                $restaurant->slug .= '-' . $duplicate;
-            }
+            $restaurant->slug .= '-' . ( $counter);
         }
 
         // Salvo nel database il nuovo restaurant con tutte le info
