@@ -15,7 +15,7 @@ class RestaurantController extends Controller
 
         if ($request->has('typology_id') && $requestData['typology_id']) {
             $typology = Typology::where('id', $requestData['typology_id'])->first();
-            $restaurants = $typology->restaurants;
+            $restaurants = $typology->restaurants()->with('typologies')->get();
         } else {
             $restaurants = Restaurant::with('typologies')->get();
         }
