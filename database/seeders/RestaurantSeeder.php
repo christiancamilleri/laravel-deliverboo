@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Restaurant;
+use App\Models\Typology;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -25,7 +26,7 @@ class RestaurantSeeder extends Seeder
 
             $restaurant->slug = Str::slug($restaurant->name);
             $duplicate = count(Restaurant::where('slug', $restaurant->slug)->get());
-            if($duplicate){
+            if ($duplicate) {
                 $restaurant->slug .= '-' . $duplicate;
             }
 
@@ -34,6 +35,14 @@ class RestaurantSeeder extends Seeder
             $restaurant->vat_number = $faker->vat();
 
             $restaurant->save();
+
+            $typologies = Typology::all();
+            $randomTipologiesNumber = $faker->numberBetween(1, count($typologies));
+            $randomTypologies = $faker->randomElements($typologies, $randomTipologiesNumber, false);
+
+            foreach ($randomTypologies as $randomTypology) {
+                $restaurant->typologies()->attach($randomTypology);
+            }
         }
     }
 }
