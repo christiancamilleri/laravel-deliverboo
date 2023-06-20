@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form id="register-form" method="POST" action="{{ route('register') }}">
                             @csrf
 
                             <div class="mb-4 row">
@@ -70,6 +70,9 @@
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
+
+                                <div id="password-matching-error" class="text-danger">
+                                </div>
                             </div>
 
                             <div class="mb-4 row mb-0">
@@ -85,4 +88,8 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script src="{{ mix('resources/js/passwordValidation.js') }}" type="text/javascript"></script>
+    @endpush
 @endsection
