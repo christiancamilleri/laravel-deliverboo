@@ -42,7 +42,9 @@ class RestaurantController extends Controller
 
     public function show($slug)
     {
-        $restaurant = Restaurant::where('slug', $slug)->with('typologies', 'products')->first();
+        $restaurant = Restaurant::where('slug', $slug)->with(['typologies', 'products' => function ($query) {
+            $query->where('visible', true);
+        }])->first();
 
         if ($restaurant) {
             return response()->json([
@@ -57,12 +59,3 @@ class RestaurantController extends Controller
         }
     }
 }
-
-
-// if ($request->has('typology_ids') && $requestData['typology_ids']) {
-//     $typologies = Typology::whereIn('id', $requestData['typology_ids'])->get();
-//     $restaurantIds = Restaurant::whereHas('typologies', function ($query) use ($typologies) {
-//         $query->whereIn('id', $typologies->pluck('id'));
-//     })->pluck('id');
-//     $restaurants = Restaurant::whereIn('id', $restaurantIds)->with('typologies')->get();
-// }
