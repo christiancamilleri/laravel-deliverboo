@@ -13,9 +13,12 @@ class RestaurantController extends Controller
     {
         $requestData = $request->all();
 
-        if ($request->has('typology_id') && $requestData['typology_id']) {
-            $typology = Typology::where('id', $requestData['typology_id'])->first();
-            $restaurants = $typology->restaurants()->with('typologies')->get();
+        if ($request->has('typology_ids') && $requestData['typology_ids']) {
+            $typology_ids = $requestData['typology_ids'];
+
+            $restaurants = Restaurant::whereHas('typologies', function ($query) use ($typology_ids) {
+                $query->whereIn('typology_id', $typology_ids);
+            }, '=', count($typology_ids))->with('typologies')->get();
         } else {
             $restaurants = Restaurant::with('typologies')->get();
         }
@@ -54,3 +57,12 @@ class RestaurantController extends Controller
         }
     }
 }
+
+
+// if ($request->has('typology_ids') && $requestData['typology_ids']) {
+//     $typologies = Typology::whereIn('id', $requestData['typology_ids'])->get();
+//     $restaurantIds = Restaurant::whereHas('typologies', function ($query) use ($typologies) {
+//         $query->whereIn('id', $typologies->pluck('id'));
+//     })->pluck('id');
+//     $restaurants = Restaurant::whereIn('id', $restaurantIds)->with('typologies')->get();
+// }
