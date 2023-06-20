@@ -23,6 +23,7 @@ return new class extends Migration
             $table->decimal('price', 5, 2);
             $table->boolean('visible')->default(1);
             $table->string('photo')->nullable();
+            $table->timestamp('deleted_at')->nullable();
 
             $table->timestamps();
 
