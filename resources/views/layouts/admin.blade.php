@@ -145,7 +145,6 @@ function giveActive($route)
         </main>
     </div>
 
-
     @stack('scripts')
 </body>
 
