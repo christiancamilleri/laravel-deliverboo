@@ -179,7 +179,7 @@ class ProductController extends Controller
 
             'name' => 'required|max:100',
             'description' => 'required|max:65535',
-            'price' => 'required|numeric|max:999.99|min:0.01',
+            'price' => 'required|numeric|max:999.99|min:0',
             'photo' => 'image|max:4096|nullable',
             'slug' => $rule,
         ], [

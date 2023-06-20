@@ -26,7 +26,7 @@
             <div class="my-5 form-check">
                 <label class="form-label" for="price">Prezzo *</label>
                 <input step="0.01" class="form-control @error('price') is-invalid @enderror" type="number"
-                    id="price" name="price" value="{{ old('price') }}" required min="0.01" max="999.99">
+                    id="price" name="price" value="{{ old('price') }}" required min="0" max="999.99">
                 @error('price')
                     <div class="invalid-feedback">
                         <em> {{ $message }} </em>
