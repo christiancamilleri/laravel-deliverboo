@@ -124,7 +124,11 @@ class ProductController extends Controller
 
         $this->validator($formData, $restaurant->id, $product->id);
 
-        if ($request->hasFile('photo')) {
+        if ($request->has('delete_photo') && $formData['delete_photo'] == 'on' && $product->photo) {
+            // cancello la vecchia immagine "cover"
+            Storage::delete($product->photo);
+            $formData['photo'] = '';
+        } else if ($request->hasFile('photo')) {
 
             if ($product->photo) {
                 Storage::delete($product->photo);

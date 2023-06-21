@@ -1,1 +1,8 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+.form-img {
+    width: 60px;
+    height: auto;
+
+    object-fit: contain;
+}

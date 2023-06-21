@@ -166,8 +166,11 @@ class RestaurantController extends Controller
         // Validiamo i dati inseriti dall'utente nel form
         $this->validator($formData, $restaurant->id);
 
-        // Controlliamo se nel form è stato caricato un file per la cover
-        if ($request->hasFile('cover')) {
+        if ($request->has('delete_cover') && $formData['delete_cover'] == 'on' && $restaurant->cover) {
+            // cancello la vecchia immagine "cover"
+            Storage::delete($restaurant->cover);
+            $formData['cover'] = '';
+        } else if ($request->hasFile('cover')) {
             // In caso affermativo:
 
             // Se era presente un'immagine nel database
@@ -185,8 +188,11 @@ class RestaurantController extends Controller
             $formData['cover'] = $path;
         }
 
-        // Controlliamo se nel form è stato caricato un file per il logo
-        if ($request->hasFile('logo')) {
+        if ($request->has('delete_logo') && $formData['delete_logo'] == 'on' && $restaurant->logo) {
+            // cancello la vecchia immagine "logo"
+            Storage::delete($restaurant->logo);
+            $formData['logo'] = '';
+        } else if ($request->hasFile('logo')) {
             // In caso affermativo:
 
             // Se era presente un'immagine nel database
@@ -198,7 +204,7 @@ class RestaurantController extends Controller
             // Inserisco il percorso nell'apposita colonna di restaurant
             // $restaurant->logo = $path;
             $formData['logo'] = $path;
-        };
+        }
 
         // Se è stato modificato il nome del ristorante
         if ($formData['name'] != $restaurant->name) {

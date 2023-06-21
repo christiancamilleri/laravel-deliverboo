@@ -54,15 +54,28 @@
                 @enderror
             </div>
 
-            <div class="my-5 form-check">
-                <label class="form-label" for="photo">Foto</label>
-                <input class="form-control @error('photo') is-invalid @enderror" type="file" id="photo"
-                    name="photo" accept=".png, .jpg, .jpeg">
-                @error('photo')
-                    <div class="invalid-feedback">
-                        <em> {{ $message }} </em>
-                    </div>
-                @enderror
+            <div class="d-flex align-items-end gap-3 my-5">
+                <img class="form-img"
+                    src="{{ $product->photo ? asset('storage/' . $product->photo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
+                    alt="">
+
+                <div class="form-check">
+                    <label class="form-label" for="photo">Foto</label>
+                    <input class="form-control @error('photo') is-invalid @enderror" type="file" id="photo"
+                        name="photo" accept=".png, .jpg, .jpeg">
+                    @error('photo')
+                        <div class="invalid-feedback">
+                            <em> {{ $message }} </em>
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="form-check">
+                    <input name="delete_photo" type="checkbox" class="btn-check" id="btn-delete-photo" autocomplete="off">
+                    <label class="btn btn-outline-danger" for="btn-delete-photo">
+                        <i class="fa-solid fa-trash"></i>
+                    </label>
+                </div>
             </div>
 
             <button class="btn btn-secondary ms-4 mt-3" type="submit">Modifica prodotto</button>
