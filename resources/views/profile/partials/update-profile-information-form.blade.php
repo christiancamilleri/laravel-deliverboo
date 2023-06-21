@@ -29,7 +29,7 @@
 
         <div class="mb-2">
             <label for="email">
-                {{__('Email') }}
+                Indirizzo E-mail
             </label>
 
             <input id="email" name="email" type="email" class="form-control" value="{{ old('email', $user->email)}}" required autocomplete="username" />

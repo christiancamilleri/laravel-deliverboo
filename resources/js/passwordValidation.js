@@ -2,7 +2,7 @@ const formEl = document.getElementById('register-form');
 
 formEl.addEventListener('submit', event => {
     const passwordEl = document.getElementById('password');
-    const passwordConfirmEl = document.getElementById('password-confirm');
+    const passwordConfirmEl = document.getElementById('password-confirmation');
 
     if (passwordEl.value != passwordConfirmEl.value) {
         // blocca il submit
