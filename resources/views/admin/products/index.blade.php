@@ -8,7 +8,8 @@
         <div class="my-5 text-center">
             <a class="btn btn-primary" href="{{ route('admin.restaurants.products.create', $restaurant) }}">Aggiungi un
                 prodotto</a>
-            <a class="btn btn-primary" href="{{ 'http://localhost:5174/restaurants/' . $restaurant->slug }} ">Preview</a>
+            <a class="btn btn-primary" href="{{ 'http://localhost:5174/restaurants/' . $restaurant->slug }} "
+                target="_blank">Preview</a>
         </div>
 
 

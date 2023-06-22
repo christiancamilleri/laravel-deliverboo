@@ -37,7 +37,7 @@ class RestaurantSeeder extends Seeder
             $restaurant->save();
 
             $typologies = Typology::all();
-            $randomTipologiesNumber = $faker->numberBetween(1, count($typologies));
+            $randomTipologiesNumber = $faker->numberBetween(1, count($typologies) / 2);
             $randomTypologies = $faker->randomElements($typologies, $randomTipologiesNumber, false);
 
             foreach ($randomTypologies as $randomTypology) {

@@ -34,10 +34,9 @@
                 @enderror
             </div>
 
-            <div class="form-check form-switch">
+            <div class="ms-4 form-check form-switch">
                 <label class="form-check-label" for="visible">Disponibilità</label>
-                <input class="form-check-input" type="checkbox" role="switch" name="visible" id="visible"
-                    @checked(old('visible') ?? true)>
+                <input class="form-check-input" type="checkbox" role="switch" name="visible" id="visible" checked>
             </div>
 
             <div class="my-5 form-check">

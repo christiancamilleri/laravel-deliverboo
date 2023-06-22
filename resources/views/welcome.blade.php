@@ -1,216 +1,227 @@
 @extends('layouts.app')
 @section('content')
-
-<div class="">
     <div class="">
-
-        <div class="jumbo-image">
-            <div class="inner-jumbo">
-                <h1 class="text-center">Benvenuto su Deliveboo</h1>
-                <h3 class="text-center">Accedi o registrati</h3>
-                <div class="d-flex justify-content-center gap-3 pt-2">
-                    <a class="col-4 col-lg-2 col-xl-1 text-center btn" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    <a class="col-4 col-lg-2 col-xl-1 text-center btn" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </div>
-            </div>
-        </div>
-
-        <section class="section-1">
-            <div class="container my-5 py-5 text-center">
-                <h2 class="__h2">Aumenta le tue vendite diventando partner del più grande servizio online di ordini a domicilio d'Italia</h2>
-                <p class="my-3">Metti il tuo attività a disposizione di migliaia di nuovi clienti entrando nel gruppo DeliveBoo. Appena affiliato avrai più ordini, le tecnologie più recenti, pubblicità e un servizio clienti dedicato.</p>
-                <div class="my-5 pt-5 flex-column flex-lg-row row-gap-5  d-flex justify-content-center">
-                    <div class="col-12 col-lg-4 d-flex flex-column gap-3">
-                        <i class="fa-solid fa-percent"></i>
-                        <h4>Risparmi giornalieri</h4>
-                        <span>Grazie alle offerte esclusive sui prodotti per le consegne riservate ai ristoranti partner</span>
-                    </div>
-                    <div class="col-12 col-lg-4 d-flex flex-column gap-3">
-                        <i class="fa-solid fa-circle-dollar-to-slot"></i>
-                        <h4>Risparmia i soldi della pubblicità</h4>
-                        <span>Dalle affissioni agli spot in tv, DeliveBoo pubblicizza per te il tuo ristorante.</span>
-                    </div>
-                    <div class="col-12 col-lg-4 d-flex flex-column gap-3">
-                        <i class="fa-solid fa-mobile-screen-button"></i>
-                        <h4>Tecnologia Innovativa</h4>
-                        <span>Migliora i tuoi ordini e l'esperienza dei clienti grazie alle più recenti tecnologie.</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-2">
-            <div class="container my-5 py-5 text-center">
-                <h2 class="__h2">Tantissimi consigli</h2>
-                <p class="my-3">Siamo sempre disponibili a offrirti consigli e idee su come migliorare il tuo business.</p>
-                <div class="my-5 pt-5 flex-column flex-lg-row row-gap-5  d-flex justify-content-center">
-                    <div class="col-12 col-lg-4 d-flex flex-column gap-3">
-                        <i class="fa-solid fa-user-plus"></i>
-                        <h4>DeliveBoo</h4>
-                        <span>è il punto di incontro tra te e i tuoi potenziali clienti, affezionati alla nostra piattaforma grazie a investimenti lungimiranti nelle campagne di marketing e a un’offerta di prodotti e servizi sempre più ricca.</span>
-                    </div>
-                    <div class="col-12 col-lg-4 d-flex flex-column gap-3">
-                        <i class="fa-solid fa-chart-pie"></i>
-                        <h4>Adesione a zero rischi</h4>
-                        <span>Non ci sono costi fissi adesione. Le nostre entrate dipendono dalle commissioni, e quindi dal successo della tua attività. In più, offriamo regolarmente offerte, sconti e prezzi competitivi su packaging, borse per le consegne e abbigliamento per rider.</span>
-                    </div>
-                    <div class="col-12 col-lg-4 d-flex flex-column gap-3">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <h4>Consegne su misura</h4>
-                        <span>I nostri servizi, le opportunità delle opzioni di consegna e il nostro supporto smart possono essere utili ad attività come la tua che sono il cardine del nostro business.</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-3">
-            <div class="container my-5 py-5 text-center">
-                <h2 class="">"Da quando sono su DeliveBoo il fatturato è cresciuto del 25%. Gli ordini a domicilio sono diventati sempre più importanti per il mio business."</h2>
-                <p class="my-3">Riccardo, Bianco</p>
-                <div class="my-5 pt-5 flex-column flex-lg-row row-gap-5  d-flex justify-content-center">
-                    <div class="col-12 col-lg-4 d-flex flex-column gap-3">
-                        <i class="fa-solid fa-file-circle-check"></i>
-                        <h4>Registrati</h4>
-                        <span>Inserisci i tuoi dati qui sopra. Ti faremo una serie di domande sulla tua attività</span>
-                    </div>
-                    <div class="col-12 col-lg-4 d-flex flex-column gap-3">
-                        <i class="fa-solid fa-id-badge"></i>
-                        <h4>Imposta il profilo</h4>
-                        <span>Carica il tuo documento d’identità, una prova di titolarità e il tuo menù o catalogo di prodotti. <br> Ti invieremo subito dopo il kit necessario per iniziare</span>
-                    </div>
-                    <div class="col-12 col-lg-4 d-flex flex-column gap-3">
-                        <i class=" fa-solid fa-brands fa-sellcast"></i>
-                        <h4>Inizia a vendere</h4>
-                        <span>Ricevi i primi ordini e concludi le prime vendite</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-<footer class="text-center text-lg-start bg-light text-muted">
-
-  <section class="d-flex justify-content-center justify-content-lg-between p-4">
-
-    <div class="container d-flex justify-content-center justify-content-lg-between p-4">
-
-        <div class="me-5 d-none d-lg-block">
-          <span>Connettiti con noi sui nostri social:</span>
-        </div>
-
-    
-
         <div class="">
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-google"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-linkedin"></i>
-          </a>
-        </div>
 
+            <div class="jumbo-image">
+                <div class="inner-jumbo">
+                    <h1 class="text-center">Benvenuto su Deliveboo</h1>
+                    <h3 class="text-center">Accedi o registrati</h3>
+                    <div class="d-flex justify-content-center gap-3 pt-2">
+                        <a class="col-4 col-lg-2 col-xl-1 text-center btn" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                        <a class="col-4 col-lg-2 col-xl-1 text-center btn"
+                            href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                    </div>
+                </div>
+            </div>
 
-    </div>
-  </section>
+            <section class="section-1">
+                <div class="container my-5 py-5 text-center">
+                    <h2 class="__h2">Aumenta le tue vendite diventando partner del più grande servizio online di ordini a
+                        domicilio d'Italia</h2>
+                    <p class="my-3">Metti il tuo attività a disposizione di migliaia di nuovi clienti entrando nel gruppo
+                        DeliveBoo. Appena affiliato avrai più ordini, le tecnologie più recenti, pubblicità e un servizio
+                        clienti dedicato.</p>
+                    <div class="my-5 pt-5 flex-column flex-lg-row row-gap-5  d-flex justify-content-center">
+                        <div class="col-12 col-lg-4 d-flex flex-column gap-3">
+                            <i class="fa-solid fa-percent"></i>
+                            <h4>Risparmi giornalieri</h4>
+                            <span>Grazie alle offerte esclusive sui prodotti per le consegne riservate ai ristoranti
+                                partner</span>
+                        </div>
+                        <div class="col-12 col-lg-4 d-flex flex-column gap-3">
+                            <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                            <h4>Risparmia i soldi della pubblicità</h4>
+                            <span>Dalle affissioni agli spot in tv, DeliveBoo pubblicizza per te il tuo ristorante.</span>
+                        </div>
+                        <div class="col-12 col-lg-4 d-flex flex-column gap-3">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            <h4>Tecnologia Innovativa</h4>
+                            <span>Migliora i tuoi ordini e l'esperienza dei clienti grazie alle più recenti
+                                tecnologie.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
+            <section class="section-2">
+                <div class="container my-5 py-5 text-center">
+                    <h2 class="__h2">Tantissimi consigli</h2>
+                    <p class="my-3">Siamo sempre disponibili a offrirti consigli e idee su come migliorare il tuo
+                        business.</p>
+                    <div class="my-5 pt-5 flex-column flex-lg-row row-gap-5  d-flex justify-content-center">
+                        <div class="col-12 col-lg-4 d-flex flex-column gap-3">
+                            <i class="fa-solid fa-user-plus"></i>
+                            <h4>DeliveBoo</h4>
+                            <span>è il punto di incontro tra te e i tuoi potenziali clienti, affezionati alla nostra
+                                piattaforma grazie a investimenti lungimiranti nelle campagne di marketing e a un’offerta di
+                                prodotti e servizi sempre più ricca.</span>
+                        </div>
+                        <div class="col-12 col-lg-4 d-flex flex-column gap-3">
+                            <i class="fa-solid fa-chart-pie"></i>
+                            <h4>Adesione a zero rischi</h4>
+                            <span>Non ci sono costi fissi adesione. Le nostre entrate dipendono dalle commissioni, e quindi
+                                dal successo della tua attività. In più, offriamo regolarmente offerte, sconti e prezzi
+                                competitivi su packaging, borse per le consegne e abbigliamento per rider.</span>
+                        </div>
+                        <div class="col-12 col-lg-4 d-flex flex-column gap-3">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <h4>Consegne su misura</h4>
+                            <span>I nostri servizi, le opportunità delle opzioni di consegna e il nostro supporto smart
+                                possono essere utili ad attività come la tua che sono il cardine del nostro business.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-
-  <section class="">
-    <div class="container text-center text-md-start mt-5">
-
-      <div class="row mt-3">
-  
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-          <h6 class="__h2 text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>DeliveBoo
-          </h6>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </div>
- 
-
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-          <h6 class="__h2 text-uppercase fw-bold mb-4">
-            Servizio
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Rapido</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Puntuale</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Sicuro</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Peciso</a>
-          </p>
-        </div>
-
-
-
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-          <h6 class="__h2 text-uppercase fw-bold mb-4">
-            Link Utili
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Pricing</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Settings</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Orders</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Help</a>
-          </p>
-        </div>
-
-
-
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
-          <h6 class="__h2 text-uppercase fw-bold mb-4">Contatto</h6>
-          <p><i class="fas fa-home me-3"></i> Milano, MI 20123</p>
-          <p>
-            <i class="fas fa-envelope me-3"></i>
-            deliveboo@delivery.com
-          </p>
-          <p><i class="fas fa-phone me-3"></i> + 39 123 25 36</p>
-          <p><i class="fas fa-print me-3"></i> + 39 234 567 89</p>
-        </div>
-    
-      </div>
-
-    </div>
-  </section>
-
-
-
-  <div class="copyright text-center p-4">
-    © 2021 Copyright:
-    <a class="text-reset fw-bold" href="">by Polo</a>
-  </div>
-
-</footer>
+            <section class="section-3">
+                <div class="container my-5 py-5 text-center">
+                    <h2 class="">"Da quando sono su DeliveBoo il fatturato è cresciuto del 25%. Gli ordini a domicilio
+                        sono diventati sempre più importanti per il mio business."</h2>
+                    <p class="my-3">Riccardo, Bianco</p>
+                    <div class="my-5 pt-5 flex-column flex-lg-row row-gap-5  d-flex justify-content-center">
+                        <div class="col-12 col-lg-4 d-flex flex-column gap-3">
+                            <i class="fa-solid fa-file-circle-check"></i>
+                            <h4>Registrati</h4>
+                            <span>Inserisci i tuoi dati qui sopra. Ti faremo una serie di domande sulla tua attività</span>
+                        </div>
+                        <div class="col-12 col-lg-4 d-flex flex-column gap-3">
+                            <i class="fa-solid fa-id-badge"></i>
+                            <h4>Imposta il profilo</h4>
+                            <span>Carica il tuo documento d’identità, una prova di titolarità e il tuo menù o catalogo di
+                                prodotti. <br> Ti invieremo subito dopo il kit necessario per iniziare</span>
+                        </div>
+                        <div class="col-12 col-lg-4 d-flex flex-column gap-3">
+                            <i class=" fa-solid fa-brands fa-sellcast"></i>
+                            <h4>Inizia a vendere</h4>
+                            <span>Ricevi i primi ordini e concludi le prime vendite</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
 
+            <footer class="text-center text-lg-start bg-light text-muted">
+
+                <section class="d-flex justify-content-center justify-content-lg-between p-4">
+
+                    <div class="container d-flex justify-content-center justify-content-lg-between p-4">
+
+                        <div class="me-5 d-none d-lg-block">
+                            <span>Connettiti con noi sui nostri social:</span>
+                        </div>
+
+
+
+                        <div class="">
+                            <a href="" class="me-4 text-reset">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="" class="me-4 text-reset">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="" class="me-4 text-reset">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="" class="me-4 text-reset">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="" class="me-4 text-reset">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+
+
+                    </div>
+                </section>
+
+
+
+                <section class="">
+                    <div class="container text-center text-md-start mt-5">
+
+                        <div class="row mt-3">
+
+                            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                                <h6 class="__h2 text-uppercase fw-bold mb-4">
+                                    <i class="fas fa-gem me-3"></i>DeliveBoo
+                                </h6>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet
+                                    consectetur adipisicing elit.
+                                </p>
+                            </div>
+
+
+                            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                                <h6 class="__h2 text-uppercase fw-bold mb-4">
+                                    Servizio
+                                </h6>
+                                <p>
+                                    <a href="#!" class="text-reset">Rapido</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Puntuale</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Sicuro</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Peciso</a>
+                                </p>
+                            </div>
+
+
+
+                            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                                <h6 class="__h2 text-uppercase fw-bold mb-4">
+                                    Link Utili
+                                </h6>
+                                <p>
+                                    <a href="#!" class="text-reset">Pricing</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Settings</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Orders</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Help</a>
+                                </p>
+                            </div>
+
+
+
+                            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                                <h6 class="__h2 text-uppercase fw-bold mb-4">Contatto</h6>
+                                <p><i class="fas fa-home me-3"></i> Milano, MI 20123</p>
+                                <p>
+                                    <i class="fas fa-envelope me-3"></i>
+                                    deliveboo@delivery.com
+                                </p>
+                                <p><i class="fas fa-phone me-3"></i> + 39 123 25 36</p>
+                                <p><i class="fas fa-print me-3"></i> + 39 234 567 89</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+
+
+
+                <div class="copyright text-center p-4">
+                    © 2021 Copyright:
+                    <a class="text-reset fw-bold" href="">by Polo</a>
+                </div>
+
+            </footer>
 
 
 
@@ -221,7 +232,10 @@
 
 
 
-        {{-- <div class="logo_laravel">
+
+
+
+            {{-- <div class="logo_laravel">
             <img src="" alt=""> --}}
             {{-- <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-25">
                 <g clip-path="url(#clip0)" fill="#EF3B2D">
@@ -235,65 +249,61 @@
 
         <p class="col-md-8 fs-4">This a preset package with Bootstrap 5 views for laravel projects including laravel breeze/blade. It works from laravel 9.x to the latest release 10.x</p>
         <a href="https://packagist.org/packages/pacificdev/laravel_9_preset" class="btn btn-primary btn-lg" type="button">Documentation</a> --}}
-    {{-- </div>
+            {{-- </div>
 </div> --}}
 
-{{-- <div class="content">
+            {{-- <div class="content">
     <div class="container">
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora temporibus, dicta nemo aliquam totam nisi deserunt soluta quas voluptatum ab beatae praesentium necessitatibus minus, facilis illum rerum officiis accusamus dolores!</p>
     </div>
 </div> --}}
-@endsection
+        @endsection
 
-<style>
+        <style>
+            .jumbo-image {
+                height: 500px;
+                background-image: url('../../../img/samantha-fields-tMD6iP9fWF4-unsplash.jpg');
+                background-size: cover;
 
-    .jumbo-image {
-        height: 500px;
-        background-image: url('../../../img/samantha-fields-tMD6iP9fWF4-unsplash.jpg');
-        background-size: cover;
+            }
 
-    }
+            .inner-jumbo {
+                height: 100%;
+                width: auto;
+                padding: 50px;
+                color: white;
+                background-color: rgba(0, 0, 0, 0.295);
+            }
 
-    .inner-jumbo {
-        height: 100%;
-        width: auto;
-        padding: 50px;
-        color: white;
-        background-color: rgba(0, 0, 0, 0.295);
-    }
+            .text-center.btn {
+                color: white;
+                background-color: #fc8200;
+            }
 
-    .text-center.btn {
-        color: white;
-        background-color: #fc8200;
-    }
-    
-    .fa-solid {
-        color: #fc8200;
-        font-size: 100px
-    }
+            .fa-solid {
+                color: #fc8200;
+                font-size: 100px
+            }
 
-    .__h2,
-    .fas,
-    .fab {
-        color: #fc8200;
-    }
+            .__h2,
+            .fas,
+            .fab {
+                color: #fc8200;
+            }
 
-    .section-2 {
-        background-color: #f1f2f4;
-    }
+            .section-2 {
+                background-color: #f1f2f4;
+            }
 
-    .copyright {
-        background-color: #fc8200
-    }
+            .copyright {
+                background-color: #fc8200
+            }
 
-    section.d-flex.justify-content-center.justify-content-lg-between.p-4 {
-        border-bottom: 5px solid #fc8200;
-        border-top: 5px solid #fc8200;
+            section.d-flex.justify-content-center.justify-content-lg-between.p-4 {
+                border-bottom: 5px solid #fc8200;
+                border-top: 5px solid #fc8200;
 
-    }
+            }
 
-    .inner-jumbo h1 {
-
-    }
-
-</style>
+            .inner-jumbo h1 {}
+        </style>

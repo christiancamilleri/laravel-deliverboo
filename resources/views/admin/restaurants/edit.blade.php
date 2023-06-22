@@ -54,7 +54,7 @@
                 @enderror
             </div>
 
-            <div class="d-flex align-items-end gap-3 my-5">
+            <div class="ms-4 d-flex align-items-end gap-3 my-5">
                 <img class="form-img"
                     src="{{ $restaurant->logo ? asset('storage/' . $restaurant->logo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="logo_image">
@@ -78,7 +78,7 @@
                 </div>
             </div>
 
-            <div class="d-flex align-items-end gap-3 my-5">
+            <div class="ms-4 d-flex align-items-end gap-3 my-5">
                 <img class="form-img"
                     src="{{ $restaurant->cover ? asset('storage/' . $restaurant->cover) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="cover_image">

@@ -37,10 +37,10 @@
                 @enderror
             </div>
 
-            <div class="form-check form-switch">
+            <div class="ms-4 form-check form-switch">
                 <label class="form-check-label" for="visible">Disponibile</label>
-                <input class="form-check-input" type="checkbox" role="switch" name="visible" id="visible" checked
-                    autocomplete @checked(old('visible') ?? $product->visible)>
+                <input class="form-check-input" type="checkbox" role="switch" name="visible" id="visible"
+                    @checked($product->visible)>
             </div>
 
             <div class="my-5 form-check">
@@ -54,7 +54,7 @@
                 @enderror
             </div>
 
-            <div class="d-flex align-items-end gap-3 my-5">
+            <div class="ms-4 d-flex align-items-end gap-3 my-5">
                 <img class="form-img"
                     src="{{ $product->photo ? asset('storage/' . $product->photo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="">
