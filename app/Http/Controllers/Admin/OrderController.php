@@ -68,7 +68,8 @@ class OrderController extends Controller
      */
     public function show(Restaurant $restaurant, Order $order)
     {
-        return view('admin.orders.show', compact('restaurant', 'order'));
+        $products = $restaurant->products()->withTrashed()->get();
+        return view('admin.orders.show', compact('restaurant', 'order', 'products'));
     }
 
     /**

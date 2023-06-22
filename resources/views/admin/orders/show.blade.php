@@ -6,7 +6,7 @@
 
         <h2>Prodotti</h2>
 
-        @foreach ($order->products as $product)
+        @foreach ($products as $product)
             <p>{{ $product->name }} - Quantità: {{ $product->pivot->quantity }}</p>
         @endforeach
     </div>
