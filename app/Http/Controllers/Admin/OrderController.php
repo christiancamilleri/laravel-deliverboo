@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function index(Restaurant $restaurant)
     {
         $orders = Order::whereHas('products', function ($query) use ($restaurant) {
-            $query->where('restaurant_id', $restaurant->id);
+            $query->where('restaurant_id', $restaurant->id)->withTrashed();
         })->with('products')->orderByDesc('created_at')->get();
 
         return view('admin.orders.index', compact('restaurant', 'orders'));
@@ -69,7 +69,7 @@ class OrderController extends Controller
     public function show(Restaurant $restaurant, Order $order)
     {
         $products = $restaurant->products()->withTrashed()->get();
-        return view('admin.orders.show', compact('restaurant', 'order', 'products'));
+        return view('admin.orders.show', compact('restaurant', 'order'));
     }
 
     /**
