@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
 
-            $table->dateTime('date_time');
             $table->decimal('total_price', 6, 2);
             $table->string('name', 100);
             $table->string('email', 50);

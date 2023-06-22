@@ -15,7 +15,6 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -34,9 +33,25 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $success)
     {
-        //
+        $newOrder = new Order();
+
+        // $newOrder->name = $formData['user.name'];
+        $newOrder->name = $request->input('user.name');
+        $newOrder->email = $request->input('user.email');
+        $newOrder->postal_code = $request->input('user.postalCode');
+        $newOrder->address = $request->input('user.address');
+        $newOrder->optional_info = $request->input('user.optionalInfo');
+        $newOrder->total_price = $request->input('amount');
+        $newOrder->status = $success;
+
+        $newOrder->save();
+
+        $cartItems = $request->input('cartItems');
+        foreach ($cartItems as $item) {
+            $newOrder->products()->attach($item['product']['id'], ['quantity' => $item['quantity']]);
+        }
     }
 
     /**

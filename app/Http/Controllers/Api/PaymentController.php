@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Braintree\Gateway;
@@ -35,7 +36,7 @@ class PaymentController extends Controller
         ]);
 
         $formData = $request->all();
-        $nonce = $formData['payment_method_nonce'];
+        $nonce = $formData['nonce'];
         $amount = $formData['amount'];
 
         // Effettua il pagamento utilizzando il nonce della carta di credito
@@ -46,6 +47,9 @@ class PaymentController extends Controller
                 'submitForSettlement' => true,
             ],
         ]);
+
+        $orderController = app()->make(OrderController::class);
+        $orderController->store($request, $result->success);
 
         if ($result->success) {
             // Il pagamento è andato a buon fine

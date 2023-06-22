@@ -24,7 +24,6 @@ class OrderSeeder extends Seeder
             $order = new Order();
 
             $order->total_price = 0;
-            $order->date_time = $faker->dateTime();
             $order->name = $faker->firstName() . ' ' . $faker->lastName();
             $order->email = $faker->email();
             $order->postal_code = $faker->postcode();
