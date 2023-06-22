@@ -13,9 +13,9 @@
         </div>
 
 
-        @if (count($restaurant->products))
+        @if (count($products))
             <div class="row row-gap-4 my-5">
-                @foreach ($restaurant->products as $product)
+                @foreach ($products as $product)
                     <div class="col-12 col-sm-12 col-lg-6 col-xl-4">
                         <div class="card">
                             <img src="{{ $product->photo ? asset('storage/' . $product->photo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"

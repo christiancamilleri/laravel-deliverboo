@@ -22,7 +22,8 @@ class ProductController extends Controller
     public function index(Restaurant $restaurant)
     {
         if ($restaurant->user->id === Auth::id()) {
-            return view('admin.products.index', compact('restaurant'));
+            $products = $restaurant->products()->orderBy('name')->get();
+            return view('admin.products.index', compact('restaurant', 'products'));
         } else {
             return view('unauthorized');
         }

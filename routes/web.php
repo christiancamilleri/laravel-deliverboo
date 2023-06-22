@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\ProductController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +30,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
 
     Route::resource('restaurants.products', ProductController::class)->parameters(['restaurants' => 'restaurant:slug', 'products' => 'product:slug']);
+
+    Route::resource('restaurants.orders', OrderController::class)->parameters(['restaurants' => 'restaurant:slug']);
 });
 
 require __DIR__ . '/auth.php';

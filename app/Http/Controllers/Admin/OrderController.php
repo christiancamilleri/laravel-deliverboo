@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -13,8 +14,13 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Restaurant $restaurant)
     {
+        $orders = Order::whereHas('products', function ($query) use ($restaurant) {
+            $query->where('restaurant_id', $restaurant->id);
+        })->with('products')->orderByDesc('created_at')->get();
+
+        return view('admin.orders.index', compact('restaurant', 'orders'));
     }
 
     /**
@@ -60,9 +66,9 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Restaurant $restaurant, Order $order)
     {
-        //
+        return view('admin.orders.show', compact('restaurant', 'order'));
     }
 
     /**

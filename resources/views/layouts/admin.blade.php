@@ -75,15 +75,14 @@ function giveActive($route)
                             @endif
                         @else
                             <li class="d-flex gap-3">
-                                <a class="dropdown-item"
-                                href="{{ route('admin.restaurants.index') }}">Home</a>
+                                <a class="dropdown-item" href="{{ route('admin.restaurants.index') }}">Home</a>
                                 <a class="dropdown-item" href="{{ url('profile') }}">Profilo</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
+                                    onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                     Esci
                                 </a>
-                                
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
@@ -131,7 +130,7 @@ function giveActive($route)
                                 <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.products.create', $userRestaurant)) }}"
                                     href="{{ route('admin.restaurants.products.create', $userRestaurant) }}"><i
                                         class="fa-regular fa-square-plus"></i> Aggiugi un prodotto</a>
-                                @if (count($userRestaurant->products))
+                                {{-- @if (count($userRestaurant->products))
                                     <ul>
                                         @foreach ($userRestaurant->products as $product)
                                             <li class="nav-link">
@@ -140,7 +139,9 @@ function giveActive($route)
                                             </li>
                                         @endforeach
                                     </ul>
-                                @endif
+                                @endif --}}
+                                <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.orders.index', $userRestaurant)) }}"
+                                    href="{{ route('admin.restaurants.orders.index', $userRestaurant) }}">Ordini</a>
                             @else
                                 <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.create')) }}"
                                     href="{{ route('admin.restaurants.create') }}"><i
