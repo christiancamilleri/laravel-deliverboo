@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('email', 50);
             $table->string('postal_code', 5);
             $table->string('address');
+            $table->string('phone')->nullable();
             $table->text('optional_info')->nullable();
             $table->tinyInteger('status')->default(0);
 

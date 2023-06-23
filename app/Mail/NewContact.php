@@ -22,6 +22,7 @@ class NewContact extends Mailable
      */
     public function __construct($_lead)
     {
+
         $this->lead = $_lead;
     }
 
@@ -33,11 +34,12 @@ class NewContact extends Mailable
     public function envelope()
     {
         return new Envelope(
-            replyTo: $this->lead->address,
+            replyTo: $this->lead->email,
             subject: 'Nuovo contatto',
         );
     }
 
+    
     /**
      * Get the message content definition.
      *
