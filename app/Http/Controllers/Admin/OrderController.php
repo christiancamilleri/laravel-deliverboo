@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NewContact;
+use App\Models\Lead;
 use App\Models\Order;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -43,7 +46,6 @@ class OrderController extends Controller
     {
         $newOrder = new Order();
 
-        // $newOrder->name = $formData['user.name'];
         $newOrder->name = $request->input('user.name');
         $newOrder->email = $request->input('user.email');
         $newOrder->postal_code = $request->input('user.postalCode');
@@ -57,6 +59,32 @@ class OrderController extends Controller
         $cartItems = $request->input('cartItems');
         foreach ($cartItems as $item) {
             $newOrder->products()->attach($item['product']['id'], ['quantity' => $item['quantity']]);
+        }
+
+        if ($success) {
+            $data = [
+                'name' => $newOrder->name,
+                'email' => $newOrder->email,
+                'content' => 'Ordine effettuato con successo',
+            ];
+
+            $new_lead = new Lead();
+            $new_lead->fill($data);
+            $new_lead->save();
+
+            Mail::to($data['email'])->send(new NewContact($new_lead));
+
+            $data = [
+                'name' => $newOrder->products[0]->restaurant->name,
+                'email' => $newOrder->products[0]->restaurant->user->email,
+                'content' => 'Hai appena ricevuto un nuovo ordine',
+            ];
+
+            $new_lead = new Lead();
+            $new_lead->fill($data);
+            $new_lead->save();
+
+            Mail::to($newOrder->products[0]->restaurant->user->email)->send(new NewContact($new_lead));
         }
     }
 
