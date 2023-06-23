@@ -75,6 +75,7 @@
                     <label class="btn btn-outline-danger" for="btn-delete-photo">
                         <i class="fa-solid fa-trash"></i>
                     </label>
+                    <small>(Seleziona per eliminare)</small>
                 </div>
             </div>
 

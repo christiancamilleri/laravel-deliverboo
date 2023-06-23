@@ -6,6 +6,8 @@
         <div class="d-flex justify-content-center align-items-center gap-3 py-5">
             <a class="btn btn-primary" href="{{ route('admin.restaurants.products.index', $restaurant->slug) }}">Vai al
                 Menu</a>
+            <a class="btn btn-outline-primary" href="{{ route('admin.restaurants.orders.index', $restaurant) }}">Vai agli
+                ordini</a>
             <a class="btn btn-secondary" href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a>
 
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteRestaurant">
@@ -24,9 +26,9 @@
 
             <div>
                 <div>
-                    @foreach($restaurant->typologies as $typology)
-                        <span class="badge" style=" background-color: {{$typology->color}}">
-                                {{$typology->name}}
+                    @foreach ($restaurant->typologies as $typology)
+                        <span class="badge" style=" background-color: {{ $typology->color }}">
+                            {{ $typology->name }}
                         </span>
                     @endforeach
                 </div>
@@ -39,7 +41,7 @@
 
 
         <h2>{{ $restaurant->user->name }}</h2>
-        
+
 
         <ul class="list-group list-group-flush py-4">
             <li class="list-group-item">Indirizzo: {{ $restaurant->address }}</li>

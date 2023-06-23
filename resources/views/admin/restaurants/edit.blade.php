@@ -75,6 +75,7 @@
                     <label class="btn btn-outline-danger" for="btn-delete-logo">
                         <i class="fa-solid fa-trash"></i>
                     </label>
+                    <small>(Seleziona per eliminare)</small>
                 </div>
             </div>
 
@@ -99,6 +100,7 @@
                     <label class="btn btn-outline-danger" for="btn-delete-cover">
                         <i class="fa-solid fa-trash"></i>
                     </label>
+                    <small>(Seleziona per eliminare)</small>
                 </div>
             </div>
 
