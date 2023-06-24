@@ -18,59 +18,32 @@ class StatisticController extends Controller
     public function index(Restaurant $restaurant)
     {
         if ($restaurant->user->id === Auth::id()) {
+            
+            $orders = Order::whereHas('products', function ($query) use ($restaurant) {
+                $query->where('restaurant_id', $restaurant->id)->withTrashed();
+            })
+                ->with('products')
 
-            // $yearOrders = Order::whereHas('products', function ($query) use ($restaurant) {
-            //     $query->where('restaurant_id', $restaurant->id)->withTrashed();
-            // })
-            //     ->with('products')
-            //     ->orderByDesc('created_at')
-            //     ->get()
-            //     ->groupBy(function ($order) {
-            //         return $order->created_at->format('Y'); // Raggruppa per anno 
-            //     });
-
-                $orders = Order::whereHas('products', function ($query) use ($restaurant) {
-                    $query->where('restaurant_id', $restaurant->id)->withTrashed();
-                })
-                    ->with('products')
-
-                    ->get()
-                    ->groupBy(function ($order) {
-                        return $order->created_at->format('Y-m'); // Raggruppa per anno 
-                    });  
-                    
-                    $groupedOrders = [];
-                        foreach ($orders as $yearMonth => $yearMonthOrders) {
-                            list($year, $month) = explode('-', $yearMonth);
-                            
-                            if (!isset($groupedOrders[$year])) {
-                                $groupedOrders[$year] = [];
-                            }
-                            
-                            $groupedOrders[$year][$month] = $yearMonthOrders;
-                        }
-
-                    // $orders = Order::whereHas('products', function ($query) use ($restaurant) {
-                    //     $query->where('restaurant_id', $restaurant->id)->withTrashed();
-                    // })
-                    //     ->with('products')
-                    //     ->orderByRaw('YEAR(created_at) DESC, MONTH(created_at) DESC')
-                    //     ->get()
-                    //     ->groupBy(function ($order) {
-                    //         return $order->created_at->format('Y-m'); // Raggruppa per anno e mese
-                    //     });
+                ->get()
+                ->groupBy(function ($order) {
+                    return $order->created_at->format('Y-m');
+                });  
                 
-        // $orders = Order::whereHas('products', function ($query) use ($restaurant) {
-        //     $query->where('restaurant_id', $restaurant->id)->withTrashed();
-        // })->with('products')->orderByDesc('created_at')->get();
-
+                $groupedOrders = [];
+                    foreach ($orders as $yearMonth => $yearMonthOrders) {
+                        list($year, $month) = explode('-', $yearMonth);
+                        
+                        if (!isset($groupedOrders[$year])) {
+                            $groupedOrders[$year] = [];
+                        }
+                        
+                        $groupedOrders[$year][$month] = $yearMonthOrders;
+                    }
+                    
         } else {
-
+            
             return view('unauthorized');
         }
-        // dd($ordersgroup);
-        // dd($orders);
-        // return view('admin.statistics.index', compact('restaurant', 'yearOrders', 'monthOrders', 'orders'));
 
         return view('admin.statistics.index', compact('groupedOrders'));
 

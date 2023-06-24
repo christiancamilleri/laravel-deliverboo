@@ -103,10 +103,10 @@
 
         function destroyCharts() {
             if (chart1) {
-                chart1.destroy(); // Distruggi la prima chart se esiste
+                chart1.destroy(); 
             }
             if (chart2) {
-                chart2.destroy(); // Distruggi la seconda chart se esiste
+                chart2.destroy(); 
             }
         };
 
@@ -124,7 +124,7 @@
             },
             options: {
                 animation: {
-                    duration: 4999, // Durata dell'animazione in millisecondi
+                    duration: 4999, 
                 }
             }
         });
@@ -142,7 +142,7 @@
             },       
             options: {
                 animation: {
-                    duration: 5000, // Durata dell'animazione in millisecondi
+                    duration: 5000, 
                 }
             }
         });
