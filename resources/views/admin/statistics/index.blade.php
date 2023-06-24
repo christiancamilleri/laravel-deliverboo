@@ -2,14 +2,25 @@
 
 
 @section('content')
+
     <div class="container chart my-5">
         <h2 class="text-center">Guadagno annuale</h2>
+        <div class="spinner text-center py-2">
+            <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>              
+        </div>
         <canvas id="myChart"></canvas>
     </div>
 
 
     <div class="container chart my-5">
         <h2 class="text-center">Guadagno mensile</h2>
+        <div class="spinner text-center py-5">
+            <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>              
+        </div>
         <canvas id="myChart2"></canvas>
     </div>
     
@@ -54,9 +65,54 @@
         console.log(sumByMonth);
 
 
+        var ctx1 = document.getElementById('myChart').getContext('2d');
+        var chart1 = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['','','','','',''],
+                datasets: [{
+                    label: 'Guadagno €',
+                    data: [0,0,0],
+                    backgroundColor: '#d14748' 
+                }]
+            }
+        });
+        
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+        var chart2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['','',''],
+                datasets: [{
+                    label: 'Guadagno €',
+                    data: [0,0,0],
+                    backgroundColor: '#d14748' 
+                }]
+            }
+        });
+        
+        setTimeout(() => {
+            let spinners = document.querySelectorAll('.spinner')
+            for (let i = 0; i < spinners.length; i++) {
+                spinners[i].innerHTML = ''
+            }
+            
+            destroyCharts();
+            loadCharts();
+        }, 3500);
 
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var chart = new Chart(ctx, {
+        function destroyCharts() {
+            if (chart1) {
+                chart1.destroy(); // Distruggi la prima chart se esiste
+            }
+            if (chart2) {
+                chart2.destroy(); // Distruggi la seconda chart se esiste
+            }
+        };
+
+        function loadCharts() {
+        var ctx1 = document.getElementById('myChart').getContext('2d');
+        chart1 = new Chart(ctx1, {
             type: 'bar',
             data: {
                 labels: years,
@@ -65,11 +121,16 @@
                     data: sumByYear,
                     backgroundColor: '#d14748' 
                 }]
+            },
+            options: {
+                animation: {
+                    duration: 4999, // Durata dell'animazione in millisecondi
+                }
             }
         });
-
-        var ctx = document.getElementById('myChart2').getContext('2d');
-        var chart = new Chart(ctx, {
+        
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+        chart2 = new Chart(ctx2, {
             type: 'bar',
             data: {
                 labels: months,
@@ -78,10 +139,14 @@
                     data: sumByMonth,
                     backgroundColor: '#d14748' 
                 }]
+            },       
+            options: {
+                animation: {
+                    duration: 5000, // Durata dell'animazione in millisecondi
+                }
             }
         });
-    </script>
-
-
+        }
+        </script>
 @endsection
 
