@@ -35,6 +35,9 @@ function giveActive($route)
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -158,9 +161,13 @@ function giveActive($route)
             </div>
 
         </main>
+
     </div>
 
     @stack('scripts')
 </body>
 
 </html>
+
+ 
+ 

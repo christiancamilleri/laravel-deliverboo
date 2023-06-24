@@ -20,7 +20,7 @@ class OrderSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             $order = new Order();
 
             $order->total_price = 0;
@@ -28,6 +28,7 @@ class OrderSeeder extends Seeder
             $order->email = $faker->email();
             $order->postal_code = $faker->postcode();
             $order->address = $faker->streetAddress();
+            $order->created_at = $faker->date() . ' ' . $faker->time();
 
             $order->save();
 
