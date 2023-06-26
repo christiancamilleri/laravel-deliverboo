@@ -145,6 +145,8 @@ function giveActive($route)
                                 @endif --}}
                                 <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.orders.index', $userRestaurant)) }}"
                                     href="{{ route('admin.restaurants.orders.index', $userRestaurant) }}">Ordini</a>
+                                <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.statistics.index', $userRestaurant)) }}"
+                                    href="{{ route('admin.restaurants.statistics.index', $userRestaurant) }}">Statistiche</a>
                             @else
                                 <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.create')) }}"
                                     href="{{ route('admin.restaurants.create') }}"><i
@@ -168,6 +170,3 @@ function giveActive($route)
 </body>
 
 </html>
-
- 
- 

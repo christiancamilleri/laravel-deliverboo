@@ -15,12 +15,6 @@
 
                         <a class="btn btn-primary" href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a>
                     </div>
-
-                    <div class="d-flex justify-content-center my-5">
-                        <a class="btn btn-primary"
-                            href="{{ route('admin.restaurants.statistics.index', $restaurant) }}">Tieni
-                            d'occhio i tuoi guadagni</a>
-                    </div>
                 </div>
             @else
                 <h4 class="text-center">Inizia creando il tuo ristorante</h4>
