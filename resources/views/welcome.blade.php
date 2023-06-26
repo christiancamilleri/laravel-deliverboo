@@ -16,7 +16,7 @@
             </div>
 
             <section class="section-1">
-                <div class="container my-5 py-5 text-center">
+                <div class="container py-5 text-center">
                     <h2 class="__h2">Aumenta le tue vendite diventando partner del più grande servizio online di ordini a
                         domicilio d'Italia</h2>
                     <p class="my-3">Metti il tuo attività a disposizione di migliaia di nuovi clienti entrando nel gruppo
@@ -45,7 +45,7 @@
             </section>
 
             <section class="section-2">
-                <div class="container my-5 py-5 text-center">
+                <div class="container py-5 text-center">
                     <h2 class="__h2">Tantissimi consigli</h2>
                     <p class="my-3">Siamo sempre disponibili a offrirti consigli e idee su come migliorare il tuo
                         business.</p>
@@ -75,7 +75,7 @@
             </section>
 
             <section class="section-3">
-                <div class="container my-5 py-5 text-center">
+                <div class="container py-5 text-center">
                     <h2 class="">"Da quando sono su DeliveBoo il fatturato è cresciuto del 25%. Gli ordini a domicilio
                         sono diventati sempre più importanti per il mio business."</h2>
                     <p class="my-3">Riccardo, Bianco</p>
@@ -260,9 +260,13 @@
         @endsection
 
         <style>
+
+            body{
+                background-image: url('/img/sfondo.jpg');
+            }
             .jumbo-image {
                 height: 500px;
-                background-image: url('../../../img/samantha-fields-tMD6iP9fWF4-unsplash.jpg');
+                background-image: url('/img/samantha-fields-tMD6iP9fWF4-unsplash.jpg');
                 background-size: cover;
 
             }
@@ -277,7 +281,7 @@
 
             .text-center.btn {
                 color: white;
-                background-color: #fc8200;
+                background-color: #fc0000;
             }
 
             .fa-solid {
@@ -291,9 +295,11 @@
                 color: #fc8200;
             }
 
-            .section-2 {
-                background-color: #f1f2f4;
+            .container.py-5.text-center{
+                background-color: #191c1fef;
             }
+            
+          
 
             .copyright {
                 background-color: #fc8200
