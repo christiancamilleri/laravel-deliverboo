@@ -20,7 +20,7 @@ class OrderSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 200; $i++) {
+        for ($i = 0; $i < 500; $i++) {
             $order = new Order();
 
             $order->total_price = 0;
