@@ -1,25 +1,21 @@
 @extends ('layouts.admin')
 
 @section('content')
-    <div class="container p-5 mb-5 bg-dark rounded-3">
-        <h1 class="text-center ">Benvenuto {{ $userName }}</h1>
+    <div class="container p-5 mb-5 bg-dark rounded-3 text-center ">
+        <h1 class="">Benvenuto {{ $userName }}</h1>
 
-        <div class="row justify-content-center my-5">
-            @if ($restaurant)
-                <div class="card d-flex flex-column align-items-center">
-                    <img src="{{ $restaurant->logo ? asset('storage/' . $restaurant->logo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
-                        class="card-img-top w-50 restaurant-image" alt="Logo . {{ $restaurant->name }}">
+        <h2 class="my-5 d-none d-lg-block"><i class="fa-solid fa-circle-arrow-left"></i> Usa il menu sulla sinistra per navigare nel gestionale del tuo ristorante</h2>
+        <h2 class="my-5 d-lg-none"><i class="fa-solid fa-circle-arrow-up"></i> Usa il menu in alto per navigare nel gestionale del tuo ristorante</h2>
 
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <h5 class="card-title">{{ $restaurant->name }}</h5>
 
-                        <a class="btn btn-primary" href="{{ route('admin.restaurants.show', $restaurant) }}">Dettagli</a>
-                    </div>
-                </div>
-            @else
-                <h4 class="text-center">Inizia creando il tuo ristorante</h4>
-                <a class="btn btn-primary" href="{{ route('admin.restaurants.create') }}">Crea il tuo ristorante</a>
-            @endif
+        <div class="d-flex flex-column align-items-center bg-success rounded-5 p-5">
+            
+            <h2>Necessiti di supporto?</h2>
+            <i class="fa-solid fa-phone fs-2 my-3"></i>    
+            <h5 class="">0842 532 25 23</h5>
+    
+            <p class="">Assistenza telefonica 24 ore su 24, 7 giorni su 7</p>
+
         </div>
 
     </div>
