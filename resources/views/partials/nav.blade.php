@@ -1,8 +1,15 @@
 <nav class="navbar navbar-expand-md shadow-sm nav bg-black">
     <div class="container">
+        @guest
+        <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+            <img src="{{ asset('img/DeeliveBoo-removebg-preview.png') }}" alt="">
+        </a>
+        @else
         <a class="navbar-brand d-flex align-items-center" href="{{ route('admin.restaurants.index') }}">
             <img src="{{ asset('img/DeeliveBoo-removebg-preview.png') }}" alt="">
         </a>
+
+        @endguest
 
         <button class="navbar-toggler  bg-primary" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
