@@ -16,13 +16,13 @@
 
         </div>
 
-        <img src="{{ $restaurant->cover ? asset('storage/' . $restaurant->cover) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
-            alt="cover_image" class="w-100">
+        <img class="cover" src="{{ $restaurant->cover ? asset('storage/' . $restaurant->cover) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
+            alt="cover_image" >
 
         <div class="d-flex justify-content-start align-items-center gap-2 pt-2">
 
-            <img src="{{ $restaurant->logo ? asset('storage/' . $restaurant->logo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
-                alt="logo" class="w-25">
+            <img class="logo" src="{{ $restaurant->logo ? asset('storage/' . $restaurant->logo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
+                alt="logo" >
 
             <div>
                 <div>

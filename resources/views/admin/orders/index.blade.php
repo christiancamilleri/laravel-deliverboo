@@ -1,7 +1,9 @@
 @extends ('layouts/admin')
 
 @section('content')
-    <table class="table table-hover">
+<div class="table-responsive">
+
+    <table class="table align-middle table-hover my-5">
         <thead class="text-bg-danger">
             <th>
                 Data e orario
@@ -56,4 +58,5 @@
         </tbody>
 
     </table>
+</div>
 @endsection

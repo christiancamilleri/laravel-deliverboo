@@ -6,9 +6,9 @@
 
         <div class="row justify-content-center my-5">
             @if ($restaurant)
-                <div class="card w-50">
+                <div class="card">
                     <img src="{{ $restaurant->logo ? asset('storage/' . $restaurant->logo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
-                        class="card-img-top" alt="Logo . {{ $restaurant->name }}">
+                        class="card-img-top restaurant-image" alt="Logo . {{ $restaurant->name }}">
 
                     <div class="card-body">
                         <h5 class="card-title">{{ $restaurant->name }}</h5>

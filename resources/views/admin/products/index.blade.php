@@ -1,7 +1,7 @@
 @extends ('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
 
         <h1 class="my-5 text-center">Il tuo menu</h1>
 
@@ -16,13 +16,13 @@
         @if (count($products))
             <div class="row row-gap-4 my-5">
                 @foreach ($products as $product)
-                    <div class="col-12 col-sm-12 col-lg-6 col-xl-4">
+                    <div class="col-12 col-sm-12 col-lg-6 col-xl-4 ">
                         <div class="card">
                             <img src="{{ $product->photo ? asset('storage/' . $product->photo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
-                                class="card-img-top" alt="...">
+                                class="card-img-top product-image" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $product->name }}</h5>
-                                <p class="card-text">{{ $product->description }}</p>
+                                {{-- <p class="card-text">{{ $product->description }}</p> --}}
                                 <p class="card-text">{{ $product->price }} Euro</p>
                                 @if ($product->visible)
                                     <span class="badge rounded-pill text-bg-success card-title">Disponibile</span>
@@ -50,8 +50,9 @@
 
 
 <style>
-    img {
-        height: 250px;
+    .product-image {
+        height: 300px;
         object-fit: cover
     }
+
 </style>

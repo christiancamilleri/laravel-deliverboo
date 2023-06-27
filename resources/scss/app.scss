@@ -8,8 +8,183 @@
     object-fit: contain;
 }
 
-// palette colori
+
+// ----------------------
+// footer
+
+.footer {
+    .__h2,
+    .fas,
+    .fab {
+        color: #8d1616;
+    }
+
+    .container.py-5.text-center{
+        background-color: #191c1fef;
+    }
+    
+  
+
+    .copyright {
+        border-top: 2px solid #8d1616;
+        background-color: #000000;
+    }
+
+    section.d-flex.justify-content-center.justify-content-lg-between.p-4 {
+        border-bottom: 5px solid #8d1616;
+        border-top: 5px solid #8d1616;
+
+    }
+}
+
+// /footer
+// ----------------------
 
 
-// button
+// ----------------------
+// Nav
+
+.nav{
+    nav.navbar.navbar-expand-md.navbar-light.bg-white.shadow-sm {
+        font-weight: bold;
+        background-color: black !important;
+    }
+
+    .navbar-brand.d-flex.align-items-center {
+        font-size: 35px;
+        color: white;
+    }
+
+    .nav-link {
+        color: white
+    }
+
+    button.navbar-toggler {
+        border: 1px solid white;
+        background-color: white;
+    }
+}
+
+@media (min-width: 768px){
+    .navbar-expand-md .navbar-collapse {
+        display: flex !important;
+        justify-content: flex-end;
+        flex-basis: auto;
+    }
+
+}
+
+
+// /Nav
+// ----------------------
+
+
+
+
+// ----------------------
+// /Welcome
+
+body{
+    background-image: url('/img/sfondo.jpg');
+}
+.welcome {
+    .jumbo-image {
+        height: 500px;
+        background-image: url('/img/samantha-fields-tMD6iP9fWF4-unsplash.jpg');
+        background-size: cover;
+
+    }
+
+    .inner-jumbo {
+        height: 100%;
+        width: auto;
+        padding: 50px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.295);
+    }
+
+    .text-center.btn {
+        color: white;
+        background-color: #8d1616;
+    }
+
+    .fa-solid {
+        color: #8d1616;
+        font-size: 100px
+    }
+
+
+
+    .container.py-5.text-center{
+        background-color: #191c1fef;
+    }
+    
+  
+}
+
+// /Welcome
+// ----------------------
+
+
+
+
+
+
+// ----------------------
+// Aside
+
+.aside {
+
+}
+
+// /Aside
+// ----------------------
+
+
+
+// ----------------------
+// Product Index
+
+.product-image {
+    height: 300px;
+    object-fit: contain;
+    background-color: #e6e6e6;
+}
+
+// /Product Index
+// ----------------------
+
+
+
+
+// ----------------------
+// Restaurant Index
+
+.restaurant-image {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    background-color: #e6e6e6;
+}
+
+// /Restaurant Index
+// ----------------------
+
+
+// ----------------------
+// Restaurant Show
+
+.cover {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    background-color: #e6e6e6;
+}
+
+.logo{
+    width: 90px;
+}
+
+// /Restaurant Index
+// ----------------------
 
