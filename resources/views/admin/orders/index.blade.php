@@ -1,10 +1,12 @@
 @extends ('layouts/admin')
 
 @section('content')
+
+
 @if (count($orders))
     <div class="table-responsive container p-5 mb-5 bg-dark rounded-3">
 
-        <table class="table align-middle table-hover">
+        <table class="table align-middle table-hover d-none d-xl-block">
             <thead class="text-bg-danger">
                 <th>
                     Data e orario
@@ -22,10 +24,7 @@
                     Indirizzo
                 </th>
                 <th>
-                    Optional info
-                </th>
-                <th>
-                    Stato ordine
+                    Status
                 </th>
                 <th>
                     Totale
@@ -44,9 +43,94 @@
                         <td>{{ $order->email }}</td>
                         <td>{{ $order->postal_code }}</td>
                         <td>{{ $order->address }}</td>
-                        <td>{{ $order->optional_info ?? 'Nessuna' }}</td>
-                        <td>{{ $order->status ? 'ok' : 'no' }}</td>
+                        @if($order->status)
+
+                        <td class="text-success"><i class="fa-solid fa-circle-check"></i></td>
+                        @else
+                        <td class="text-danger"><i class="fa-regular fa-circle-xmark"></i></i></td>
+                        @endif
                         <td>€ {{ $order->total_price }}</td>
+                        <td><a href="{{ route('admin.restaurants.orders.show', [$restaurant, $order]) }}"><i
+                                    class="fa-solid fa-cart-shopping"></i></a></td>
+                    </tr>
+                @endforeach
+
+            </tbody>
+
+        </table>
+
+        <table class="table align-middle table-hover d-none d-md-block d-xl-none">
+            <thead class="text-bg-danger">
+                <th>
+                    Data e orario
+                </th>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Totale
+                </th>
+                <th>
+                    Prodotti
+                </th>
+            </thead>
+
+            <tbody>
+
+                @foreach ($orders as $order)
+                    <tr>
+                        <td>{{ $order->created_at }}</td>
+                        <td>{{ $order->name }}</td>
+                        <td>{{ $order->email }}</td>
+
+                        @if($order->status)
+                        <td class="text-success"><i class="fa-solid fa-circle-check"></i></td>
+                        @else
+                        <td class="text-danger"><i class="fa-regular fa-circle-xmark"></i></i></td>
+                        @endif
+                        <td>€ {{ $order->total_price }}</td>
+                        <td><a href="{{ route('admin.restaurants.orders.show', [$restaurant, $order]) }}"><i
+                                    class="fa-solid fa-cart-shopping"></i></a></td>
+                    </tr>
+                @endforeach
+
+            </tbody>
+
+        </table>
+
+        <table class="table align-middle table-hover d-block d-md-none">
+            <thead class="text-bg-danger">
+                <th>
+                    Data e orario
+                </th>
+                <th>
+                    Totale
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Prodotti
+                </th>
+            </thead>
+
+            <tbody>
+
+                @foreach ($orders as $order)
+                    <tr>
+                        <td>{{ $order->created_at }}</td>
+                        <td>€ {{ $order->total_price }}</td>
+                        @if($order->status)
+                        <td class="text-success"><i class="fa-solid fa-circle-check"></i></td>
+                        @else
+                        <td class="text-danger"><i class="fa-regular fa-circle-xmark"></i></i></td>
+                        @endif
                         <td><a href="{{ route('admin.restaurants.orders.show', [$restaurant, $order]) }}"><i
                                     class="fa-solid fa-cart-shopping"></i></a></td>
                     </tr>
