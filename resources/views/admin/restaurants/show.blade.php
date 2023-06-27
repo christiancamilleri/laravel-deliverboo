@@ -1,9 +1,9 @@
 @extends ('layouts/admin')
 
 @section('content')
-    <div class="container py-3">
+    <div class="container p-5 my-5 bg-dark rounded-3">
 
-        <div class="d-flex justify-content-center align-items-center gap-3 py-5">
+        <div class="d-flex justify-content-center align-items-center gap-3 pb-5">
             <a class="btn btn-primary" href="{{ route('admin.restaurants.products.index', $restaurant->slug) }}">Vai al
                 Menu</a>
             <a class="btn btn-outline-primary" href="{{ route('admin.restaurants.orders.index', $restaurant) }}">Vai agli

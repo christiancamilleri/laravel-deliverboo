@@ -1,7 +1,7 @@
 @extends ('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container p-5 my-5 bg-dark">
         <div class="my-1 d-flex justify-content-center gap-3">
             <a class="btn btn-secondary" href="{{ route('admin.restaurants.products.edit', [$restaurant, $product]) }}">Modifica</a>
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProduct">
@@ -9,9 +9,9 @@
             </button>
     
         </div>
-        <div class="row justify-content-center">
-            <div class="col-10">
-                <div class="my-5">
+        <div class="row my-4">
+            <div class="d-flex flex-column align-items-center justify-content-center">
+
                     <h1>{{ $product->name }}</h1>
                     <h3>{{$product->price}} Euro</h3>
                     @if ($product->visible)
@@ -19,9 +19,9 @@
                     @else
                         <span class="badge rounded-pill text-bg-danger card-title">Non disponibile</span>
                     @endif
-                    <p>{{$product->description}}</p>
+                    <p class="text-center">{{$product->description}}</p>
                     <img class="w-50" src="{{ $product->photo ? asset('storage/' . $product->photo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}" alt="">
-                </div>
+
             </div>
         </div>
 

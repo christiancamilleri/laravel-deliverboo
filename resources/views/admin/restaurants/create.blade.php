@@ -1,7 +1,7 @@
 @extends ('layouts/admin')
 
 @section('content')
-    <div class="container px-5 my-5">
+    <div class="container p-5 my-5 bg-dark rounded-3">
 
         <form id="restaurant-form" action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
 
@@ -81,7 +81,7 @@
                 <label>Tipologia *</label>
                 <div class="row">
                     @foreach ($typologies as $typology)
-                        <div class="form-check col-2">
+                        <div class="form-check col-3 d-flex align-items-center gap-2">
                             <input type="checkbox" id="typology-{{ $typology->id }}" name="typologies[]"
                                 value="{{ $typology->id }}" @checked(in_array($typology->id, old('typologies', [])))>
                             <label for="typology-{{ $typology->id }}">{{ $typology->name }}</label>
@@ -97,7 +97,7 @@
                 </div>
             </div>
 
-            <button class="btn btn-secondary ms-4 mt-3" type="submit">Crea ristorante</button>
+            <button class="btn btn-primary ms-4 mt-3" type="submit">Crea ristorante</button>
 
         </form>
     </div>

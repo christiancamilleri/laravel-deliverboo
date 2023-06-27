@@ -1,9 +1,9 @@
 @extends ('layouts.admin')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container p-5 my-5 bg-dark rounded-3">
 
-        <h1 class="my-5 text-center">Il tuo menu</h1>
+        <h1 class=" text-center">Il tuo menu</h1>
 
         <div class="my-5 text-center">
             <a class="btn btn-primary" href="{{ route('admin.restaurants.products.create', $restaurant) }}">Aggiungi un

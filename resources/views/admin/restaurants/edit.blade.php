@@ -1,7 +1,7 @@
 @extends ('layouts/admin')
 
 @section('content')
-    <div class="container px-5 my-5">
+    <div class="container p-5 my-5 bg-dark rounded-3">
         <form id="restaurant-form" action="{{ route('admin.restaurants.update', $restaurant) }}" method="POST"
             enctype="multipart/form-data">
 
@@ -131,7 +131,7 @@
                 </div>
             </div>
 
-            <button class="btn btn-secondary ms-4 mt-3" type="submit">Modifica ristorante</button>
+            <button class="btn btn-primary ms-4 mt-3" type="submit">Modifica ristorante</button>
         </form>
     </div>
 
