@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Restaurant;
+use DateInterval;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,35 +20,32 @@ class StatisticController extends Controller
     public function index(Restaurant $restaurant)
     {
         if ($restaurant->user->id === Auth::id()) {
-            
+
             $orders = Order::whereHas('products', function ($query) use ($restaurant) {
                 $query->where('restaurant_id', $restaurant->id)->withTrashed();
             })
-                ->with('products')
-
+                ->orderBy('created_at')
                 ->get()
                 ->groupBy(function ($order) {
-                    return $order->created_at->format('Y-m');
-                });  
-                
-                $groupedOrders = [];
-                    foreach ($orders as $yearMonth => $yearMonthOrders) {
-                        list($year, $month) = explode('-', $yearMonth);
-                        
-                        if (!isset($groupedOrders[$year])) {
-                            $groupedOrders[$year] = [];
-                        }
-                        
-                        $groupedOrders[$year][$month] = $yearMonthOrders;
-                    }
-                    
+                    return $order->created_at;
+                });
+
+            $groupedOrders = [];
+            foreach ($orders as $dateString => $order) {
+                $date = new DateTime($dateString);
+
+                $year = $date->format('Y');
+                $month = $date->format('m');
+
+                $oneYearAgo = new DateTime();
+                $groupedOrders[$year][$month] = $order;
+            }
         } else {
-            
+
             return view('unauthorized');
         }
 
         return view('admin.statistics.index', compact('groupedOrders'));
-
     }
 
     /**
