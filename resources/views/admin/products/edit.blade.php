@@ -1,7 +1,7 @@
 @extends ('layouts.admin')
 
 @section('content')
-    <div class="container p-5 my-5 bg-dark rounded-3">
+    <div class="container p-5 mb-5 bg-dark rounded-3">
 
         <form action="{{ route('admin.restaurants.products.update', [$restaurant, $product]) }}" method="POST"
             enctype="multipart/form-data">
@@ -9,7 +9,7 @@
             @csrf
             @method('PUT')
 
-            <div class="my-5 form-check">
+            <div class="mb-5 form-check">
                 <label class="form-label" for="name">Nome *</label>
                 <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name"
                     value="{{ old('name') ?? $product->name }}" required maxlength="100">

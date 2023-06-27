@@ -1,7 +1,7 @@
 @extends ('layouts.admin')
 
 @section('content')
-    <div class="container p-5 my-5 bg-dark rounded-3">
+    <div class="container p-5 mb-5 bg-dark rounded-3">
 
         <h1 class=" text-center">Il tuo menu</h1>
 

@@ -2,9 +2,9 @@
 
 @section('content')
 @if (count($orders))
-    <div class="table-responsive">
+    <div class="table-responsive container p-5 mb-5 bg-dark rounded-3">
 
-        <table class="table align-middle table-hover my-5">
+        <table class="table align-middle table-hover">
             <thead class="text-bg-danger">
                 <th>
                     Data e orario

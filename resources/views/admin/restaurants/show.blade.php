@@ -1,7 +1,7 @@
 @extends ('layouts/admin')
 
 @section('content')
-    <div class="container p-5 my-5 bg-dark rounded-3">
+    <div class="container p-5 mb-5 bg-dark rounded-3">
 
         <div class="d-flex justify-content-center align-items-center gap-3 pb-5">
             <a class="btn btn-primary" href="{{ route('admin.restaurants.products.index', $restaurant->slug) }}">Vai al

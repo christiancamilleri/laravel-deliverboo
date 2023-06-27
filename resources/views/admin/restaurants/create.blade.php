@@ -1,7 +1,7 @@
 @extends ('layouts/admin')
 
 @section('content')
-    <div class="container p-5 my-5 bg-dark rounded-3">
+    <div class="container p-5 mb-5 bg-dark rounded-3">
 
         <form id="restaurant-form" action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
 
