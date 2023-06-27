@@ -67,7 +67,10 @@ function giveActive($route)
             </div>
         </main>
 
-        @include('partials/footer')
+        <div class="mt-5">
+            @include('partials/footer')
+
+        </div>
 
     </div>
 

@@ -1,6 +1,7 @@
 @extends ('layouts/admin')
 
 @section('content')
+@if (count($orders))
     <div class="table-responsive">
 
         <table class="table align-middle table-hover my-5">
@@ -54,5 +55,12 @@
             </tbody>
 
         </table>
+@else
+<div class="alert alert-secondary" role="alert">
+    Il tuo ristorante non ha ancora nessun ordine
+</div>
+@endif
+
+    
     </div>
 @endsection

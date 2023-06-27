@@ -2,6 +2,7 @@
 
 
 @section('content')
+@if (count($groupedOrders))
     <div class="bg-dark rounded rounded-4 container chart my-5 p-3">
         <h2 class="text-center">Guadagno annuale</h2>
         <div class="spinner text-center py-2">
@@ -22,6 +23,12 @@
         </div>
         <canvas id="myChart2"></canvas>
     </div>
+
+@else
+    <div class="alert alert-secondary" role="alert">
+        Il tuo ristorante non ha statistiche da visualizzare
+    </div>
+@endif
 
     <script>
         let groupedOrders = {!! json_encode($groupedOrders) !!};
