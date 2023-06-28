@@ -60,7 +60,7 @@
                 @enderror
             </div>
 
-            <div class="ms-4 d-flex align-items-end gap-3 mb-5">
+            <div class="ms-0 ms-md-4 align-items-center gap-3 mb-5  d-flex flex-column flex-md-row">
                 <img class="form-img"
                     src="{{ $restaurant->logo ? asset('storage/' . $restaurant->logo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="logo_image">
@@ -76,7 +76,7 @@
                     @enderror
                 </div>
 
-                <div class="form-check">
+                <div class="form-check d-flex flex-column align-items-center flex-lg-row align-self-lg-end">
                     <input name="delete_logo" type="checkbox" class="btn-check" id="btn-delete-logo" autocomplete="off">
                     <label class="btn btn-outline-danger" for="btn-delete-logo">
                         <i class="fa-solid fa-trash"></i>
@@ -85,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="ms-4 d-flex align-items-end gap-3 mb-5">
+            <div class="ms-0 ms-md-4 align-items-center gap-3 mb-5  d-flex flex-column flex-md-row">
                 <img class="form-img"
                     src="{{ $restaurant->cover ? asset('storage/' . $restaurant->cover) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="cover_image">
@@ -101,7 +101,7 @@
                     @enderror
                 </div>
 
-                <div class="form-check">
+                <div class="form-check d-flex flex-column align-items-center flex-lg-row align-self-lg-end">
                     <input name="delete_cover" type="checkbox" class="btn-check" id="btn-delete-cover" autocomplete="off">
                     <label class="btn btn-outline-danger" for="btn-delete-cover">
                         <i class="fa-solid fa-trash"></i>
@@ -112,9 +112,9 @@
 
             <div class="form-group form-check mb-5 form-group d-flex gap-3 align-items-center">
                 <label>Tipologia *</label>
-                <div class="row">
+                <div class="row flex-column flex-sm-row flex-wrap">
                     @foreach ($typologies as $typology)
-                        <div class="form-check col-3 d-flex align-items-center gap-2">
+                        <div class="form-check col-md-3 col-sm-10 d-flex align-items-center gap-2 ">
 
                             @if ($errors->any())
                                 <input class="checkbox" type="checkbox" id="typology-{{ $typology->id }}"

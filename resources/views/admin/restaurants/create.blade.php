@@ -86,7 +86,7 @@
                 <label>Tipologia *</label>
                 <div class="row">
                     @foreach ($typologies as $typology)
-                        <div class="form-check col-3 d-flex align-items-center gap-2">
+                        <div class="form-check col-md-3 col-sm-10 d-flex align-items-center gap-2">
                             <input type="checkbox" id="typology-{{ $typology->id }}" name="typologies[]"
                                 value="{{ $typology->id }}" @checked(in_array($typology->id, old('typologies', [])))>
                             <label for="typology-{{ $typology->id }}">{{ $typology->name }}</label>

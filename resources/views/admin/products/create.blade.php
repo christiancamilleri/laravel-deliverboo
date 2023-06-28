@@ -40,7 +40,7 @@
                 @enderror
             </div>
 
-            <div class="ms-4 form-check form-switch">
+            <div class="ms-4 form-check form-switch mb-5">
                 <label class="form-check-label" for="visible">Disponibilità</label>
                 <input class="form-check-input" type="checkbox" role="switch" name="visible" id="visible" checked>
             </div>

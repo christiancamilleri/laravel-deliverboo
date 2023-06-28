@@ -59,7 +59,7 @@
                 @enderror
             </div>
 
-            <div class="ms-4 d-flex align-items-end gap-3 mb-5">
+            <div class="ms-0 ms-md-4 align-items-center gap-3 mb-5  d-flex flex-column flex-md-row">
                 <img class="form-img"
                     src="{{ $product->photo ? asset('storage/' . $product->photo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="">

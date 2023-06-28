@@ -50,7 +50,7 @@ function giveActive($route)
         @include('partials/nav')
 
         <main>
-            <div class="container-fluid mt-3">
+            <div class="container-fluid my-3">
 
                 <div class="row">
 

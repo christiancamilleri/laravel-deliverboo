@@ -22,7 +22,7 @@
         </div>
 
 
-        <div class="bg-dark rounded rounded-4 container chart mb-5 p-3 cont">
+        <div class="bg-dark rounded rounded-4 container chart p-3 cont">
             <h2 class="text-center">Guadagno annuale</h2>
             <div class="spinner text-center">
                 <div class="spinner-border text-danger" role="status">
