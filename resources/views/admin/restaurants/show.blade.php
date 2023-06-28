@@ -3,7 +3,7 @@
 @section('content')
 <div class="show-restaurant">
 
-    <div class="container p-5 mb-5 bg-dark rounded-3 cont">
+    <div class="container-fluid p-5 mb-5 bg-dark rounded-3 cont">
 
 
 

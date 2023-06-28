@@ -1,7 +1,7 @@
 @extends ('layouts.admin')
 
 @section('content')
-    <div class="container p-5 mb-5 bg-dark rounded-3">
+    <div class="container-fluid p-5 mb-5 bg-dark rounded-3">
 
         <div class="text-center mb-3">
             <h1>Aggiorna il tuo prodotto</h1>

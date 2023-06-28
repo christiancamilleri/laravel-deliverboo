@@ -4,7 +4,7 @@
 
 <div class="product-show">
 
-    <div class="container p-5 my-5 bg-dark cont">
+    <div class="container-fluid p-5 my-5 bg-dark cont">
         
         <a class="btn btn-secondary button-1" href="{{ route('admin.restaurants.products.edit', [$restaurant, $product]) }}">Modifica</a>
         <button type="button" class="btn btn-danger button-2" data-bs-toggle="modal" data-bs-target="#deleteProduct">

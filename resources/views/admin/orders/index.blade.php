@@ -4,7 +4,7 @@
 
 
 @if (count($orders))
-    <div class="table-responsive container p-5 mb-5 bg-dark rounded-3">
+    <div class="table-responsive container-fluid p-5 mb-5 bg-dark rounded-3">
 
         <table class="table align-middle table-hover d-none d-xl-block">
             <thead class="text-bg-danger">

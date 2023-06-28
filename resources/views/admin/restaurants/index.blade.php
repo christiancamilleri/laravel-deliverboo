@@ -1,7 +1,7 @@
 @extends ('layouts.admin')
 
 @section('content')
-    <div class="container p-5 mb-5 bg-dark rounded-3 text-center ">
+    <div class="container-fluid p-5 mb-5 bg-dark rounded-3 text-center ">
         <h1 class="">Benvenuto {{ $userName }}</h1>
 
         <h2 class="my-5 d-none d-lg-block"><i class="fa-solid fa-circle-arrow-left"></i> Usa il menu sulla sinistra per navigare nel gestionale del tuo ristorante</h2>

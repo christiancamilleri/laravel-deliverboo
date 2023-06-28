@@ -50,7 +50,7 @@ function giveActive($route)
         @include('partials/nav')
 
         <main>
-            <div class="container-fluid mt-5">
+            <div class="container-fluid mt-3">
 
                 <div class="row">
 
@@ -67,10 +67,10 @@ function giveActive($route)
             </div>
         </main>
 
-        <div class="mt-5">
+        {{-- <div class="mt-5">
             @include('partials/footer')
 
-        </div>
+        </div> --}}
 
     </div>
 

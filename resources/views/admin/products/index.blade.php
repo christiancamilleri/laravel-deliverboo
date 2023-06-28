@@ -3,7 +3,7 @@
 @section('content')
 <div class="product-index">
     
-    <div class="container p-5 mb-5 bg-dark rounded-3 cont">
+    <div class="container-fluid p-5 mb-5 bg-dark rounded-3 cont">
 
         <a class="btn btn-primary button-1" href="{{ route('admin.restaurants.products.create', $restaurant) }}">Aggiungi un
             prodotto</a>
