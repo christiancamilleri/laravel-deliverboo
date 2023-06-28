@@ -54,11 +54,11 @@ function giveActive($route)
 
                 <div class="row">
 
-                    <div class="col-12 col-lg-2 aside pe-2 pe-md">
+                    <div class="col-12 col-lg-2 aside pe-md-3">
                         @include('partials/aside')
                     </div>
 
-                    <div class="col-12 col-lg-10 pe-2 pe-md-4">
+                    <div class="col-12 col-lg-10 pe-md-3">
                         @yield('content')
                     </div>
 
