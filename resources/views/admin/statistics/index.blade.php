@@ -10,7 +10,7 @@
         <div class="bg-dark rounded rounded-4 container chart mb-5 p-3 cont">
             <div class="text-center">
                 <h2>Guadagno mensile</h2>
-                <em>(ultimi 6 mesi)</em>
+                <em>(ultimi 12 mesi)</em>
 
             </div>
             <div class="spinner text-center">

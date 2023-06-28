@@ -18,7 +18,7 @@
         @method('patch')
 
         <div class="mb-2">
-            <label for="name">{{__('Nome')}}</label>
+            <label for="name">{{__('Nome')}} *</label>
             <input class="form-control" type="text" name="name" id="name" autocomplete="name" value="{{old('name', $user->name)}}" required autofocus>
             @error('name')
             <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
 
         <div class="mb-2">
             <label for="email">
-                Indirizzo E-mail
+                Indirizzo E-mail *
             </label>
 
             <input id="email" name="email" type="email" class="form-control" value="{{ old('email', $user->email)}}" required autocomplete="username" />
