@@ -1,7 +1,7 @@
 @extends ('layouts/admin')
 
 @section('content')
-    <div class="container-fluid p-5 mb-5 bg-dark rounded-3">
+    <div class="container-fluid p-5 bg-dark rounded-3">
 
         <div class="text-center mb-3">
             <h1>Aggiorna il tuo ristorante</h1>
@@ -14,7 +14,7 @@
             @method('PUT')
             @csrf
 
-            <div class="my-5 form-check">
+            <div class="mb-5 form-check">
                 <label class="form-label" for="name">Nome ristorante *</label>
                 <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name"
                     maxlength="100" value="{{ old('name') ?? $restaurant->name }}" required>
@@ -25,7 +25,7 @@
                 @enderror
             </div>
 
-            <div class="my-5 form-check">
+            <div class="mb-5 form-check">
                 <label class="form-label" for="address">Indirizzo *</label>
                 <input class="form-control @error('address') is-invalid @enderror" type="text" id="address"
                     maxlength="255" name="address" value="{{ old('address') ?? $restaurant->address }}" required>
@@ -36,7 +36,7 @@
                 @enderror
             </div>
 
-            <div class="my-5 form-check">
+            <div class="mb-5 form-check">
                 <label class="form-label" for="postal_code">Cap *</label>
                 <input class="form-control @error('postal_code') is-invalid @enderror" pattern="[0-9]{5}" type="text"
                     id="postal_code" name="postal_code" value="{{ old('postal_code') ?? $restaurant->postal_code }}"
@@ -48,7 +48,7 @@
                 @enderror
             </div>
 
-            <div class="my-5 form-check">
+            <div class="mb-5 form-check">
                 <label class="form-label" for="vat_number">Partita IVA *</label>
                 <input class="form-control @error('vat_number') is-invalid @enderror" type="text"
                     style="text-transform: uppercase;" pattern="[A-Za-z]{2}[0-9]{11}" id="vat_number" name="vat_number"
@@ -60,7 +60,7 @@
                 @enderror
             </div>
 
-            <div class="ms-4 d-flex align-items-end gap-3 my-5">
+            <div class="ms-4 d-flex align-items-end gap-3 mb-5">
                 <img class="form-img"
                     src="{{ $restaurant->logo ? asset('storage/' . $restaurant->logo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="logo_image">
@@ -85,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="ms-4 d-flex align-items-end gap-3 my-5">
+            <div class="ms-4 d-flex align-items-end gap-3 mb-5">
                 <img class="form-img"
                     src="{{ $restaurant->cover ? asset('storage/' . $restaurant->cover) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="cover_image">
@@ -110,7 +110,7 @@
                 </div>
             </div>
 
-            <div class="form-group form-check my-5 form-group d-flex gap-3 align-items-center">
+            <div class="form-group form-check mb-5 form-group d-flex gap-3 align-items-center">
                 <label>Tipologia *</label>
                 <div class="row">
                     @foreach ($typologies as $typology)

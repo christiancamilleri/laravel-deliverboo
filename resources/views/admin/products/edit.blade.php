@@ -1,7 +1,7 @@
 @extends ('layouts.admin')
 
 @section('content')
-    <div class="container-fluid p-5 mb-5 bg-dark rounded-3">
+    <div class="container-fluid p-5 bg-dark rounded-3">
 
         <div class="text-center mb-3">
             <h1>Aggiorna il tuo prodotto</h1>
@@ -30,7 +30,7 @@
                 @enderror
             </div>
 
-            <div class="my-5 form-check">
+            <div class="mb-5 form-check">
                 <label class="form-label" for="price">Prezzo *</label>
                 <input step="0.01" class="form-control @error('price') is-invalid @enderror" type="number"
                     id="price" name="price" value="{{ old('price') ?? $product->price }}" required min="0"
@@ -42,13 +42,13 @@
                 @enderror
             </div>
 
-            <div class="ms-4 form-check form-switch">
+            <div class="ms-4 form-check form-switch mb-5">
                 <label class="form-check-label" for="visible">Disponibile</label>
                 <input class="form-check-input" type="checkbox" role="switch" name="visible" id="visible"
                     @checked($product->visible)>
             </div>
 
-            <div class="my-5 form-check">
+            <div class="mb-5 form-check">
                 <label class="form-label" for="description">Descrizione *</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" type="number" id="description"
                     name="description" required maxlength="65535">{{ old('description') ?? $product->description }}</textarea>
@@ -59,7 +59,7 @@
                 @enderror
             </div>
 
-            <div class="ms-4 d-flex align-items-end gap-3 my-5">
+            <div class="ms-4 d-flex align-items-end gap-3 mb-5">
                 <img class="form-img"
                     src="{{ $product->photo ? asset('storage/' . $product->photo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="">
