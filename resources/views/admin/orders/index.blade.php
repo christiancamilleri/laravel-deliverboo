@@ -9,7 +9,7 @@
         <table class="table align-middle table-hover d-none d-xl-block">
             <thead class="text-bg-danger">
                 <th>
-                    Data e orario
+                    Data
                 </th>
                 <th>
                     Nome
@@ -62,7 +62,7 @@
         <table class="table align-middle table-hover d-none d-md-block d-xl-none">
             <thead class="text-bg-danger">
                 <th>
-                    Data e orario
+                    Data
                 </th>
                 <th>
                     Nome
@@ -107,7 +107,7 @@
         <table class="table align-middle table-hover d-block d-md-none">
             <thead class="text-bg-danger">
                 <th>
-                    Data e orario
+                    Data
                 </th>
                 <th>
                     Totale
@@ -124,7 +124,7 @@
 
                 @foreach ($orders as $order)
                     <tr>
-                        <td>{{ $order->created_at }}</td>
+                        <td>{{ $order->created_at->format('Y-m-d') }}</td>
                         <td>€ {{ $order->total_price }}</td>
                         @if($order->status)
                         <td class="text-success"><i class="fa-solid fa-circle-check"></i></td>
