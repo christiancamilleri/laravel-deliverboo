@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md shadow-sm nav bg-black">
-    <div class="container">
+    <div class="container-fluid">
         @guest
         <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
             <img src="{{ asset('img/DeeliveBoo-removebg-preview.png') }}" alt="">
