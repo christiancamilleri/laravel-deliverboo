@@ -75,7 +75,7 @@
                     @enderror
                 </div>
 
-                <div class="form-check">
+                <div class="form-check align-self-center align-self-md-end d-md-flex flex-md-column align-items-md-center flex-lg-row gap-lg-3">
                     <input name="delete_photo" type="checkbox" class="btn-check" id="btn-delete-photo" autocomplete="off">
                     <label class="btn btn-outline-danger" for="btn-delete-photo">
                         <i class="fa-solid fa-trash"></i>

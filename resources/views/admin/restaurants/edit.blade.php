@@ -76,7 +76,7 @@
                     @enderror
                 </div>
 
-                <div class="form-check d-flex flex-column align-items-center flex-lg-row align-self-lg-end">
+                <div class="form-check align-self-center align-self-md-end d-md-flex flex-md-column align-items-md-center flex-lg-row gap-lg-3">
                     <input name="delete_logo" type="checkbox" class="btn-check" id="btn-delete-logo" autocomplete="off">
                     <label class="btn btn-outline-danger" for="btn-delete-logo">
                         <i class="fa-solid fa-trash"></i>
@@ -101,7 +101,7 @@
                     @enderror
                 </div>
 
-                <div class="form-check d-flex flex-column align-items-center flex-lg-row align-self-lg-end">
+                <div class="form-check align-self-center align-self-md-end d-md-flex flex-md-column align-items-md-center flex-lg-row gap-lg-3">
                     <input name="delete_cover" type="checkbox" class="btn-check" id="btn-delete-cover" autocomplete="off">
                     <label class="btn btn-outline-danger" for="btn-delete-cover">
                         <i class="fa-solid fa-trash"></i>
