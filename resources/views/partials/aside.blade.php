@@ -1,7 +1,7 @@
 
     <div class="list-group mb-5">
-        <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.index')) }}"
-            href="{{ route('admin.restaurants.index') }}">Home</a>
+        {{-- <a class="list-group-item list-group-item-action {{ giveActive(route('admin.restaurants.index')) }}"
+            href="{{ route('admin.restaurants.index') }}">Home</a> --}}
 
         @if ($userRestaurant)
             <a class="list-group-item primary list-group-item-action {{ giveActive(route('admin.restaurants.show', $userRestaurant)) }}"

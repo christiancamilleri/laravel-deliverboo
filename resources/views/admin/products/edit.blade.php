@@ -3,6 +3,11 @@
 @section('content')
     <div class="container p-5 mb-5 bg-dark rounded-3">
 
+        <div class="text-center mb-3">
+            <h1>Aggiorna il tuo prodotto</h1>
+            <em>(puoi tornare qui in qualsiasi momento per aggiornare nuovamente questo prodotto)</em>
+        </div>
+
         <form action="{{ route('admin.restaurants.products.update', [$restaurant, $product]) }}" method="POST"
             enctype="multipart/form-data">
 

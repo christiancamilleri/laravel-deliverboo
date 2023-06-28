@@ -2,33 +2,43 @@
 
 
 @section('content')
-@if (count($groupedOrders))
-    <div class="bg-dark rounded rounded-4 container chart mb-5 p-3">
-        <h2 class="text-center">Guadagno annuale</h2>
-        <div class="spinner text-center py-2">
-            <div class="spinner-border text-danger" role="status">
-                <span class="visually-hidden">Loading...</span>
+
+<div class="statistics-index">
+
+    @if (count($groupedOrders))
+
+        <div class="bg-dark rounded rounded-4 container chart mb-5 p-3 cont">
+            <div class="text-center">
+                <h2>Guadagno mensile</h2>
+                <em>(ultimi 6 mesi)</em>
+
             </div>
-        </div>
-        <canvas id="myChart"></canvas>
-    </div>
-
-
-    <div class="bg-dark rounded rounded-4 container chart my-5 p-3">
-        <h2 class="text-center">Guadagno mensile</h2>
-        <div class="spinner text-center py-5">
-            <div class="spinner-border text-danger" role="status">
-                <span class="visually-hidden">Loading...</span>
+            <div class="spinner text-center">
+                <div class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
+            <canvas id="myChart2"></canvas>
         </div>
-        <canvas id="myChart2"></canvas>
-    </div>
 
-@else
-    <div class="alert alert-secondary" role="alert">
-        Il tuo ristorante non ha statistiche da visualizzare
-    </div>
-@endif
+
+        <div class="bg-dark rounded rounded-4 container chart mb-5 p-3 cont">
+            <h2 class="text-center">Guadagno annuale</h2>
+            <div class="spinner text-center">
+                <div class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <canvas id="myChart"></canvas>
+        </div>
+    
+    @else
+        <div class="alert alert-secondary" role="alert">
+            Il tuo ristorante non ha statistiche da visualizzare
+        </div>
+    @endif
+</div>
+
 
     <script>
         let groupedOrders = {!! json_encode($groupedOrders) !!};
@@ -98,7 +108,37 @@
                     data: [0, 0, 0],
                     backgroundColor: '#d14748'
                 }]
-            }
+            },
+            options: {
+                    animation: {
+                        duration: 5000,
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#ffffff'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: '#ffffff' // Cambia il colore del testo delle etichette dell'asse x
+                            },
+                            grid: {
+                                color: '#5b5b5b' // Cambia il colore della griglia sull'asse y
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: '#ffffff' // Cambia il colore del testo delle etichette dell'asse y
+                            },
+                            grid: {
+                                color: '#5b5b5b' // Cambia il colore della griglia sull'asse y
+                            }
+                        }
+                    }
+                }
         });
 
         let ctx2 = document.getElementById('myChart2').getContext('2d');
@@ -109,9 +149,39 @@
                 datasets: [{
                     label: 'Guadagno €',
                     data: [0, 0, 0],
-                    backgroundColor: '#d14748'
+                    backgroundColor: '#ffcc4c'
                 }]
-            }
+            },
+            options: {
+                    animation: {
+                        duration: 5000,
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#ffffff'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: '#ffffff' // Cambia il colore del testo delle etichette dell'asse x
+                            },
+                            grid: {
+                                color: '#5b5b5b' // Cambia il colore della griglia sull'asse y
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: '#ffffff' // Cambia il colore del testo delle etichette dell'asse y
+                            },
+                            grid: {
+                                color: '#5b5b5b' // Cambia il colore della griglia sull'asse y
+                            }
+                        }
+                    }
+                }
         });
 
         setTimeout(() => {
@@ -160,11 +230,17 @@
                         x: {
                             ticks: {
                                 color: '#ffffff' // Cambia il colore del testo delle etichette dell'asse x
+                            },
+                            grid: {
+                                color: '#5b5b5b' // Cambia il colore della griglia sull'asse y
                             }
                         },
                         y: {
                             ticks: {
                                 color: '#ffffff' // Cambia il colore del testo delle etichette dell'asse y
+                            },
+                            grid: {
+                                color: '#5b5b5b' // Cambia il colore della griglia sull'asse y
                             }
                         }
                     }
@@ -197,11 +273,17 @@
                         x: {
                             ticks: {
                                 color: '#ffffff' // Cambia il colore del testo delle etichette dell'asse x
+                            },
+                            grid: {
+                                color: '#5b5b5b' // Cambia il colore della griglia sull'asse y
                             }
                         },
                         y: {
                             ticks: {
                                 color: '#ffffff' // Cambia il colore del testo delle etichette dell'asse y
+                            },
+                            grid: {
+                                color: '#5b5b5b' // Cambia il colore della griglia sull'asse y
                             }
                         }
                     }
@@ -210,3 +292,5 @@
         }
     </script>
 @endsection
+
+

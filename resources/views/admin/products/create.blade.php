@@ -3,6 +3,12 @@
 @section('content')
     <div class="container p-5 mb-5 bg-dark rounded-3">
 
+        <div class="text-center">
+
+            <h1 class="text-center">Aggiunta di un prodotto</h1>
+            <em>(riempi i campi relativi al tuo nuovo prodotto, una volta aggiunto potrai modificarlo in un secondo momento)</em>
+        </div>
+
         <form action="{{ route('admin.restaurants.products.store', $restaurant) }}" method="POST"
             enctype="multipart/form-data">
             @csrf

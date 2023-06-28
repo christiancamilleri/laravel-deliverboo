@@ -150,14 +150,71 @@ body{
 // ----------------------
 // Product Index
 
-.product-image {
-    height: 300px;
-    object-fit: cover;
-    background-color: #e6e6e6;
-}
+.product-index {
 
+    .product-image {
+        height: 300px;
+        object-fit: cover;
+        background-color: #e6e6e6;
+    }
+
+    .cont {
+        position: relative
+    }
+
+    .button-1 {
+
+        position: absolute;
+        left: 10px;
+    top:-20px;
+    }
+
+    .button-2 {
+
+    position: absolute;
+    right: 10px;
+    top:-20px;
+    }
+}
 // /Product Index
 // ----------------------
+
+
+
+
+
+
+// /Product Show
+// ----------------------
+
+.product-show {
+    .cont {
+        position: relative
+    }
+
+    .button-1 {
+
+        position: absolute;
+        left: 10px;
+    top:-20px;
+    }
+
+    .button-2 {
+
+    position: absolute;
+    right: 10px;
+    top:-20px;
+    }
+}
+// ----------------------
+// Product Show
+
+
+
+
+
+
+
 
 
 
@@ -179,16 +236,60 @@ body{
 // ----------------------
 // Restaurant Show
 
-.cover {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    background-color: #e6e6e6;
+.show-restaurant {
+
+    .cover {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        background-color: #e6e6e6;
+    }
+    
+    .logo{
+        width: 90px;
+    }
+
+    .cont {
+        position: relative
+    }
+
+    .button-1 {
+
+        position: absolute;
+        left: 10px;
+    top:-20px;
+    }
+
+    .button-2 {
+
+    position: absolute;
+    right: 10px;
+    top:-20px;
+    }
+}
+// /Restaurant Index
+// ----------------------
+
+
+
+
+
+// Statistics Index
+// ----------------------
+
+.statistics-index {
+    .cont {
+        position: relative;
+    }
+    
+    .spinner {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        translate: 50% 50%;
+    }
 }
 
-.logo{
-    width: 90px;
-}
 
 // /Restaurant Index
 // ----------------------

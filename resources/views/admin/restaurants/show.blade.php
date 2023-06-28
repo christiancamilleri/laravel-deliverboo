@@ -1,53 +1,59 @@
 @extends ('layouts/admin')
 
 @section('content')
-    <div class="container p-5 mb-5 bg-dark rounded-3">
+<div class="show-restaurant">
 
-        <div class="d-flex justify-content-center align-items-center gap-3 pb-5">
-            <a class="btn btn-primary" href="{{ route('admin.restaurants.products.index', $restaurant->slug) }}">Vai al
-                Menu</a>
-            <a class="btn btn-outline-primary" href="{{ route('admin.restaurants.orders.index', $restaurant) }}">Vai agli
-                ordini</a>
-            <a class="btn btn-secondary" href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a>
+    <div class="container p-5 mb-5 bg-dark rounded-3 cont">
 
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteRestaurant">
+
+
+            <a class="button-1 btn btn-secondary" href="{{ route('admin.restaurants.edit', $restaurant) }}">Modifica</a>
+
+            <button type="button" class="button-2 btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteRestaurant">
                 Elimina
             </button>
 
-        </div>
 
-        <img class="cover" src="{{ $restaurant->cover ? asset('storage/' . $restaurant->cover) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
-            alt="cover_image" >
 
-        <div class="d-flex justify-content-start align-items-center gap-2 pt-2">
+        <h1 class="text-center mb-3">Le info del tuo ristorante</h1>
 
-            <img class="logo" src="{{ $restaurant->logo ? asset('storage/' . $restaurant->logo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
-                alt="logo" >
 
-            <div>
+        <div class="d-flex flex-column gap-5">
+
+            <img class="cover" src="{{ $restaurant->cover ? asset('storage/' . $restaurant->cover) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
+                alt="cover_image" >
+    
+            <div class="d-flex justify-content-start align-items-center gap-2 pt-2">
+    
+                <img class="logo" src="{{ $restaurant->logo ? asset('storage/' . $restaurant->logo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
+                    alt="logo" >
+    
                 <div>
-                    @foreach ($restaurant->typologies as $typology)
-                        <span class="badge" style=" background-color: {{ $typology->color }}">
-                            {{ $typology->name }}
-                        </span>
-                    @endforeach
+                    <div>
+                        @foreach ($restaurant->typologies as $typology)
+                            <span class="badge" style=" background-color: {{ $typology->color }}">
+                                {{ $typology->name }}
+                            </span>
+                        @endforeach
+                    </div>
+                    <h1>{{ $restaurant->name }}</h1>
+    
+                    <small>{{ $restaurant->slug }}</small>
                 </div>
-                <h1>{{ $restaurant->name }}</h1>
-
-                <small>{{ $restaurant->slug }}</small>
+    
             </div>
+    
+    
+            <h2>Proprietario: {{ $restaurant->user->name }}</h2>
+    
+    
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Indirizzo: {{ $restaurant->address }}</li>
+                <li class="list-group-item">Cap: {{ $restaurant->postal_code }}</li>
+                <li class="list-group-item">Partita IVA: {{ $restaurant->vat_number }}</li>
+            </ul>
 
-        </div>
-
-
-        <h2>{{ $restaurant->user->name }}</h2>
-
-
-        <ul class="list-group list-group-flush py-4">
-            <li class="list-group-item">Indirizzo: {{ $restaurant->address }}</li>
-            <li class="list-group-item">Partita IVA: {{ $restaurant->vat_number }}</li>
-            <li class="list-group-item">Codice postale: {{ $restaurant->postal_code }}</li>
-        </ul>
+        </div>    
 
 
 
@@ -61,14 +67,14 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="deleteRestaurantLabel">Modal title</h1>
+                        <h1 class="modal-title fs-5" id="deleteRestaurantLabel">Eliminazione ristorante</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Sicuro di voler eliminare il ristorante: {{ $restaurant->name }}
+                        Sicuro di voler eliminare '{{ $restaurant->name }}'?'
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
                         <form action="{{ route('admin.restaurants.destroy', $restaurant) }}" method="POST">
                             @csrf
                             @method('DELETE')
@@ -81,4 +87,7 @@
 
 
     </div>
+</div>
 @endsection
+
+

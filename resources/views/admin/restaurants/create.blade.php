@@ -3,6 +3,11 @@
 @section('content')
     <div class="container p-5 mb-5 bg-dark rounded-3">
 
+        <div class="text-center mb-3">
+            <h1>Crea il tuo ristorante</h1>
+            <em>(riempi i campi relativi al tuo nuovo ristorante, una volta aggiunto potrai modificarlo in un secondo momento)</em>
+        </div>
+
         <form id="restaurant-form" action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
 
             @csrf
