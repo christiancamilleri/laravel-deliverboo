@@ -8,19 +8,19 @@
             </div>
 
             <div class="">
-                <a href="" class="me-4 text-reset">
+                <a href="" class="me-4 text-reset text-decoration-none">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="" class="me-4 text-reset">
+                <a href="" class="me-4 text-reset text-decoration-none">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="" class="me-4 text-reset">
+                <a href="" class="me-4 text-reset text-decoration-none">
                     <i class="fab fa-google"></i>
                 </a>
-                <a href="" class="me-4 text-reset">
+                <a href="" class="me-4 text-reset text-decoration-none">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="" class="me-4 text-reset">
+                <a href="" class="me-4 text-reset text-decoration-none">
                     <i class="fab fa-linkedin"></i>
                 </a>
 
@@ -72,16 +72,16 @@
                         Link Utili
                     </h6>
                     <p>
-                        <a href="#!" class="text-reset">Pricing</a>
+                        <a href="#!" class="text-reset">Pezzi</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Settings</a>
+                        <a href="#!" class="text-reset">Impostazini</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Orders</a>
+                        <a href="#!" class="text-reset">Ordini</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Help</a>
+                        <a href="#!" class="text-reset">Aiuto</a>
                     </p>
                 </div>
     
