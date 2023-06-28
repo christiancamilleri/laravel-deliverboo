@@ -18,6 +18,9 @@
                     Email
                 </th>
                 <th>
+                    Email
+                </th>
+                <th>
                     Cap
                 </th>
                 <th>
@@ -41,6 +44,7 @@
                         <td>{{ $order->created_at->format('Y-m-d') }}</td>
                         <td>{{ $order->name }}</td>
                         <td>{{ $order->email }}</td>
+                        <td>{{ $order->phone }}</td>
                         <td>{{ $order->postal_code }}</td>
                         <td>{{ $order->address }}</td>
                         @if($order->status)
@@ -71,6 +75,9 @@
                     Email
                 </th>
                 <th>
+                    Telefono
+                </th>
+                <th>
                     Status
                 </th>
                 <th>
@@ -88,6 +95,7 @@
                         <td>{{ $order->created_at->format('Y-m-d') }}</td>
                         <td>{{ $order->name }}</td>
                         <td>{{ $order->email }}</td>
+                        <td>{{ $order->phone }}</td>
 
                         @if($order->status)
                         <td class="text-success"><i class="fa-solid fa-circle-check"></i></td>
