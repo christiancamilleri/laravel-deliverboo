@@ -38,7 +38,7 @@
 
                 @foreach ($orders as $order)
                     <tr>
-                        <td>{{ $order->created_at }}</td>
+                        <td>{{ $order->created_at->format('Y-m-d') }}</td>
                         <td>{{ $order->name }}</td>
                         <td>{{ $order->email }}</td>
                         <td>{{ $order->postal_code }}</td>
@@ -85,7 +85,7 @@
 
                 @foreach ($orders as $order)
                     <tr>
-                        <td>{{ $order->created_at }}</td>
+                        <td>{{ $order->created_at->format('Y-m-d') }}</td>
                         <td>{{ $order->name }}</td>
                         <td>{{ $order->email }}</td>
 
