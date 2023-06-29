@@ -8,7 +8,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-use FakerRestaurant\Provider\it_IT\Restaurant as FakerRestaurant;
+use Illuminate\Support\Facades\Config;
 
 class ProductSeeder extends Seeder
 {
@@ -19,30 +19,30 @@ class ProductSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        $restaurantsConfig = Config::get('custom.restaurants');
 
         $restaurants = Restaurant::all();
+
+        $i = 0;
         foreach ($restaurants as $restaurant) {
-            $randomProductsNumber = $faker->numberBetween(5, 10);
+            $products = $restaurantsConfig[$i]['products'];
 
-            for ($i = 0; $i < $randomProductsNumber; $i++) {
-                $product = new Product();
+            foreach ($products as $product) {
+                $newProduct = new Product();
 
-                $product->restaurant_id = $restaurant->id;
+                $newProduct->restaurant_id = $restaurant->id;
+                $newProduct->name = $product['name'];
+                $newProduct->photo = 'examples/product-' . $faker->numberBetween(1, 20) . '.jpg';
 
-                $faker->addProvider(new FakerRestaurant($faker));
-                $product->name = $faker->foodName();
+                $newProduct->slug = Str::slug($newProduct->name);
 
-                $product->slug = Str::slug($product->name);
-                // $duplicate = count(Product::where('restaurant_id', $product->restaurant_id)->where('slug', $product->slug)->get());
-                // if ($duplicate) {
-                //     $product->slug .= '-' . $duplicate;
-                // }
+                $newProduct->description = $product['description'];
+                $newProduct->price = $faker->randomFloat(2, 0, 10);
 
-                $product->description = $faker->paragraph();
-                $product->price = $faker->randomFloat(2, 0, 30);
-
-                $product->save();
+                $newProduct->save();
             }
+
+            $i++;
         }
     }
 }

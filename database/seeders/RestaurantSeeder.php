@@ -7,6 +7,7 @@ use App\Models\Typology;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 
 class RestaurantSeeder extends Seeder
@@ -18,31 +19,38 @@ class RestaurantSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 10; $i++) {
-            $restaurant = new Restaurant();
+        $restaurants = Config::get('custom.restaurants');
 
-            $restaurant->user_id = $i + 1;
-            $restaurant->name = $faker->company();
+        $i = 1;
+        foreach ($restaurants as $restaurant) {
+            $newRestaurant = new Restaurant();
 
-            $restaurant->slug = Str::slug($restaurant->name);
-            $duplicate = count(Restaurant::where('slug', $restaurant->slug)->get());
+            $newRestaurant->user_id = $i;
+            $newRestaurant->name = $restaurant['name'];
+            $newRestaurant->cover = 'examples/' . $restaurant['cover'] . '.jpg';
+            $newRestaurant->logo = 'examples/' . $restaurant['logo'] . '.jpg';
+
+            $newRestaurant->slug = Str::slug($newRestaurant->name);
+            $duplicate = count(Restaurant::where('slug', $newRestaurant->slug)->get());
             if ($duplicate) {
-                $restaurant->slug .= '-' . $duplicate;
+                $newRestaurant->slug .= '-' . $duplicate;
             }
 
-            $restaurant->address = $faker->streetAddress();
-            $restaurant->postal_code = $faker->postcode();
-            $restaurant->vat_number = $faker->vat();
+            $newRestaurant->address = $faker->streetAddress();
+            $newRestaurant->postal_code = $faker->postcode();
+            $newRestaurant->vat_number = $faker->vat();
 
-            $restaurant->save();
+            $newRestaurant->save();
 
             $typologies = Typology::all();
             $randomTipologiesNumber = $faker->numberBetween(1, count($typologies) / 2);
             $randomTypologies = $faker->randomElements($typologies, $randomTipologiesNumber, false);
 
             foreach ($randomTypologies as $randomTypology) {
-                $restaurant->typologies()->attach($randomTypology);
+                $newRestaurant->typologies()->attach($randomTypology);
             }
+
+            $i++;
         }
     }
 }
