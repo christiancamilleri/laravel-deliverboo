@@ -27,14 +27,14 @@
                 </div>
             </div>
 
-            {{-- <a class="btn btn-secondary button-1"
+            <a class="btn btn-secondary button-1"
                 href="{{ route('admin.restaurants.products.edit', [$restaurant, $product]) }}">Modifica</a>
             <button type="button" class="btn btn-danger button-2" data-bs-toggle="modal" data-bs-target="#deleteProduct">
                 Elimina
             </button>
 
 
-            <div class="row my-4">
+            {{-- <div class="row my-4">
                 <div class="d-flex flex-column align-items-center justify-content-center">
 
                     <h1>{{ $product->name }}</h1>
@@ -50,8 +50,8 @@
                         alt="">
 
                 </div>
-            </div> --}}
-        </div>
+            </div>
+        </div> --}}
 
         <!-- Modal -->
         <div class="modal fade" id="deleteProduct" tabindex="-1" aria-labelledby="deleteProductLabel" aria-hidden="true">
