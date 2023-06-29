@@ -22,7 +22,7 @@ class StatisticController extends Controller
         if ($restaurant->user->id === Auth::id()) {
 
             $orders = Order::whereHas('products', function ($query) use ($restaurant) {
-                $query->where('restaurant_id', $restaurant->id)->withTrashed();
+                $query->where('restaurant_id', $restaurant->id)->where('status', 1)->withTrashed();
             })
                 ->orderBy('created_at')
                 ->get()
