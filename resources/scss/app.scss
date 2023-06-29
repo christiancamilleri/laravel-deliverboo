@@ -192,6 +192,13 @@ body {
 // ----------------------
 
 .product-show {
+
+    .product-image {
+        height: 300px;
+        object-fit: cover;
+        background-color: #e6e6e6;
+    }
+    
     .cont {
         position: relative
     }

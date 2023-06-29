@@ -5,7 +5,29 @@
 
         <div class="container-fluid p-5 mb-5 bg-dark cont">
 
-            <a class="btn btn-secondary button-1"
+
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ $product->photo ? asset('/' . $product->photo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
+                            class="card-img-top product-image" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-menu h-100 card-body d-flex flex-column align-items-start justify-content-between">
+                            <h1 class="card-title">{{ $product->name }}</h1>
+                            <p class="card-text">{{ $product->description }}</p>
+                            @if ($product->visible)
+                                <span class="badge rounded-pill text-bg-success card-title fs-4">Disponibile</span>
+                            @else
+                                <span class="badge rounded-pill text-bg-danger card-title fs-4">Non disponibile</span>
+                            @endif
+                            <p class="card-text fs-2">{{ $product->price }} €</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- <a class="btn btn-secondary button-1"
                 href="{{ route('admin.restaurants.products.edit', [$restaurant, $product]) }}">Modifica</a>
             <button type="button" class="btn btn-danger button-2" data-bs-toggle="modal" data-bs-target="#deleteProduct">
                 Elimina
@@ -28,7 +50,7 @@
                         alt="">
 
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Modal -->
