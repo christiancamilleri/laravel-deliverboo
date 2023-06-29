@@ -23,18 +23,18 @@
                                     class="card-img-top product-image" alt="...">
                             </div>
                             <div class="col-md-8">
-                                <div class="card-body d-flex flex-column align-items-start justify-content-between">
-                                    <h5 class="card-title">{{ $product->name }}</h5>
+                                <div class="card-menu h-100 card-body d-flex flex-column align-items-start justify-content-between">
+                                    <h1 class="card-title">{{ $product->name }}</h1>
                                     <p class="card-text">{{ $product->description }}</p>
-                                    <p class="card-text">{{ $product->price }} Euro</p>
                                     @if ($product->visible)
-                                        <span class="badge rounded-pill text-bg-success card-title">Disponibile</span>
+                                        <span class="badge rounded-pill text-bg-success card-title fs-4">Disponibile</span>
                                     @else
-                                        <span class="badge rounded-pill text-bg-danger card-title">Non disponibile</span>
+                                        <span class="badge rounded-pill text-bg-danger card-title fs-4">Non disponibile</span>
                                     @endif
-                                    <div>
+                                    <p class="card-text fs-2">{{ $product->price }} €</p>
+                                    <div class="align-self-end">
                                         <a href="{{ route('admin.restaurants.products.show', [$restaurant->slug, $product->slug]) }}"
-                                            class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                            class="btn btn-primary fs-4 button-view"><i class="fa-solid fa-magnifying-glass"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -79,3 +79,17 @@
     </div>
 
 @endsection
+
+
+<style>
+.card-menu {
+    position: relative;
+}
+.button-view {
+    position: absolute;
+    right: 10px;
+    bottom: 10px
+
+}
+
+</style>

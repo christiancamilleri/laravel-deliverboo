@@ -61,7 +61,7 @@
             </div>
 
             <div class="ms-0 ms-md-4 align-items-center gap-3 mb-5  d-flex flex-column flex-md-row">
-                <img class="form-img"
+                <img class="form-img rounded-circle"
                     src="{{ $restaurant->logo ? asset('/' . $restaurant->logo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="logo_image">
 
@@ -87,7 +87,7 @@
             </div>
 
             <div class="ms-0 ms-md-4 align-items-center gap-3 mb-5  d-flex flex-column flex-md-row">
-                <img class="form-img"
+                <img class="form-img rounded-2"
                     src="{{ $restaurant->cover ? asset('/' . $restaurant->cover) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="cover_image">
 
