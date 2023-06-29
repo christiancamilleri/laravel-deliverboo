@@ -20,13 +20,13 @@
 
             <div class="d-flex flex-column gap-5">
 
-                <img class="cover"
+                <img class="cover rounded"
                     src="{{ $restaurant->cover ? asset('/' . $restaurant->cover) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="cover_image">
 
                 <div class="d-flex justify-content-start align-items-center gap-2 pt-2">
 
-                    <img class="logo"
+                    <img class="logo rounded rounded-circle"
                         src="{{ $restaurant->logo ? asset('/' . $restaurant->logo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                         alt="logo">
 
