@@ -62,7 +62,7 @@
 
             <div class="ms-0 ms-md-4 align-items-center gap-3 mb-5  d-flex flex-column flex-md-row">
                 <img class="form-img"
-                    src="{{ $restaurant->logo ? asset('storage/' . $restaurant->logo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
+                    src="{{ $restaurant->logo ? asset('/' . $restaurant->logo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="logo_image">
 
                 <div class="form-check">
@@ -76,7 +76,8 @@
                     @enderror
                 </div>
 
-                <div class="form-check align-self-center align-self-md-end d-md-flex flex-md-column align-items-md-center flex-lg-row gap-lg-3">
+                <div
+                    class="form-check align-self-center align-self-md-end d-md-flex flex-md-column align-items-md-center flex-lg-row gap-lg-3">
                     <input name="delete_logo" type="checkbox" class="btn-check" id="btn-delete-logo" autocomplete="off">
                     <label class="btn btn-outline-danger" for="btn-delete-logo">
                         <i class="fa-solid fa-trash"></i>
@@ -87,7 +88,7 @@
 
             <div class="ms-0 ms-md-4 align-items-center gap-3 mb-5  d-flex flex-column flex-md-row">
                 <img class="form-img"
-                    src="{{ $restaurant->cover ? asset('storage/' . $restaurant->cover) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
+                    src="{{ $restaurant->cover ? asset('/' . $restaurant->cover) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="cover_image">
 
                 <div class="form-check">
@@ -101,7 +102,8 @@
                     @enderror
                 </div>
 
-                <div class="form-check align-self-center align-self-md-end d-md-flex flex-md-column align-items-md-center flex-lg-row gap-lg-3">
+                <div
+                    class="form-check align-self-center align-self-md-end d-md-flex flex-md-column align-items-md-center flex-lg-row gap-lg-3">
                     <input name="delete_cover" type="checkbox" class="btn-check" id="btn-delete-cover" autocomplete="off">
                     <label class="btn btn-outline-danger" for="btn-delete-cover">
                         <i class="fa-solid fa-trash"></i>

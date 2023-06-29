@@ -61,7 +61,7 @@
 
             <div class="ms-0 ms-md-4 align-items-center gap-3 mb-5  d-flex flex-column flex-md-row">
                 <img class="form-img"
-                    src="{{ $product->photo ? asset('storage/' . $product->photo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
+                    src="{{ $product->photo ? asset('/' . $product->photo) : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' }}"
                     alt="">
 
                 <div class="form-check">
@@ -75,7 +75,8 @@
                     @enderror
                 </div>
 
-                <div class="form-check align-self-center align-self-md-end d-md-flex flex-md-column align-items-md-center flex-lg-row gap-lg-3">
+                <div
+                    class="form-check align-self-center align-self-md-end d-md-flex flex-md-column align-items-md-center flex-lg-row gap-lg-3">
                     <input name="delete_photo" type="checkbox" class="btn-check" id="btn-delete-photo" autocomplete="off">
                     <label class="btn btn-outline-danger" for="btn-delete-photo">
                         <i class="fa-solid fa-trash"></i>

@@ -62,7 +62,7 @@ class ProductController extends Controller
         if ($request->hasFile('photo')) {
             $path = Storage::put('product_images', $request->photo);
 
-            $formData['photo'] = $path;
+            $formData['photo'] = 'storage/' . $path;
         }
 
         $newProduct->fill($formData);
@@ -137,7 +137,7 @@ class ProductController extends Controller
 
             $path = Storage::put('product_images', $request->photo);
 
-            $formData['photo'] = $path;
+            $formData['photo'] = 'storage/' . $path;
         }
 
         if (array_key_exists('visible', $formData)) {

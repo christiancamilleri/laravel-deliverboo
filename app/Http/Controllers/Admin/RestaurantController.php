@@ -86,7 +86,7 @@ class RestaurantController extends Controller
             $path = Storage::put('restaurants_logos', $request->logo);
             // Inserisco il percorso nell'apposita colonna di restaurant
             // $newRestaurant->logo = $path;
-            $formData['logo'] = $path;
+            $formData['logo'] = 'storage/' . $path;
         };
 
 
@@ -185,7 +185,7 @@ class RestaurantController extends Controller
 
             // Inserisco il percorso nell'apposita colonna di restaurant
             // $restaurant->cover = $path;
-            $formData['cover'] = $path;
+            $formData['cover'] = 'storage/' . $path;
         }
 
         if ($request->has('delete_logo') && $formData['delete_logo'] == 'on' && $restaurant->logo) {
