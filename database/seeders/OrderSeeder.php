@@ -28,7 +28,8 @@ class OrderSeeder extends Seeder
             $order->email = $faker->email();
             $order->postal_code = $faker->postcode();
             $order->address = $faker->streetAddress();
-            $order->phone = $faker->phoneNumber(); 
+            $order->phone = $faker->phoneNumber();
+            $order->status = $faker->boolean();
             $order->created_at = $faker->dateTimeBetween('-2 year', 'now');
 
             $order->save();
