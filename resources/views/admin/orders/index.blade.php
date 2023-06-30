@@ -20,7 +20,7 @@
                 Email
             </th>
             <th>
-                Email
+                Telefono
             </th>
             <th>
                 Cap
