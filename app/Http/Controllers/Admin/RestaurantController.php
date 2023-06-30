@@ -75,7 +75,7 @@ class RestaurantController extends Controller
             $path = Storage::put('restaurants_covers', $request->cover);
             // Inserisco il percorso nell'apposita colonna di restaurant
             // $newRestaurant->cover = $path;
-            $formData['cover'] = $path;
+            $formData['cover'] = 'storage/' . $path;
         }
 
         // Controlliamo se nel form è stato caricato un file per il logo
@@ -203,7 +203,7 @@ class RestaurantController extends Controller
             $path = Storage::put('restaurants_logos', $request->logo);
             // Inserisco il percorso nell'apposita colonna di restaurant
             // $restaurant->logo = $path;
-            $formData['logo'] = $path;
+            $formData['logo'] =  'storage/' . $path;
         }
 
         // Se è stato modificato il nome del ristorante
