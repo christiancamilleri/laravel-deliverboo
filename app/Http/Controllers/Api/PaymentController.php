@@ -35,8 +35,8 @@ class PaymentController extends Controller
     {
         $formData = $request->all();
         $validate = $this->validation($formData);
-        
-        if($validate->fails()) {
+
+        if ($validate->fails()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Campi mancanti',
@@ -51,7 +51,7 @@ class PaymentController extends Controller
             'privateKey' => config('services.braintree.private_key'),
         ]);
 
-        $formData = $request->all();
+        // $formData = $request->all();
         $nonce = $formData['nonce'];
         $amount = $formData['amount'];
 
@@ -63,10 +63,9 @@ class PaymentController extends Controller
                 'submitForSettlement' => true,
             ],
         ]);
-        
+
         $this->saveOrder($request, $result->success);
-        
-        
+
         if ($result->success) {
             // Il pagamento è andato a buon fine
             return response()->json([
@@ -83,7 +82,8 @@ class PaymentController extends Controller
         }
     }
 
-    private function saveOrder($request, $success) {
+    private function saveOrder($request, $success)
+    {
         $newOrder = new Order();
 
         $newOrder->name = $request->input('user.name');
@@ -138,8 +138,9 @@ class PaymentController extends Controller
             Mail::to($newOrder->products[0]->restaurant->user->email)->send(new NewContact($new_lead));
         }
     }
-    
-    private function validation($formData) {
+
+    private function validation($formData)
+    {
         $validator = Validator::make($formData, [
             'user.name' => 'required|max:100',
             'user.address' => 'required|max:255',
